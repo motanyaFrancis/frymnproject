@@ -1,5 +1,5 @@
 
 
-# What is Pharmacy Management System?
+# Pharmacy Management
 
 Pharmacy Management System is an application.
