@@ -1,9 +1,28 @@
-<div class="list-group">
-  <a href="{% url 'admin_home'%}" class="list-group-item{% if active == 'approve' %} active{% endif %}">Approve Profiles</a>
-  <a href="{% url 'add_medicine'%}" class="list-group-item{% if active == 'add_medicine' %} active{% endif %}">Add Medicine</a>
-  <a href="{% url 'view_medicines'%}" class="list-group-item{% if active == 'view_medicine' %} active{% endif %}">View Medicines</a>
+<li class="sidebar-item">
+    <a class="sidebar-link list-group-item{% if active == 'approve' %} active{% endif %}" href="{% url 'admin_home'%}">
+        <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Approve profile</span>
+    </a>
+</li>
 
+<li class="sidebar-item">
+    <a class="sidebar-link list-group-item{% if active == 'add_medicine' %} active{% endif %}" href="{% url 'add_medicine'%}">
+        <i class="align-middle" data-feather="file-plus"></i> <span class="align-middle">Add Medicine</span>
+    </a>
+</li>
 
-  <a href="{% url 'admin_shop_list'%}" class="list-group-item{% if active == 'shop' %} active{% endif %}">Shop List</a>
-  <a href="{% url 'admin_company_list'%}" class="list-group-item{% if active == 'company' %} active{% endif %}">Company List</a>
-</div>
+<li class="sidebar-item">
+    <a class="sidebar-link list-group-item{% if active == 'view_medicine' %} active{% endif %}" href="{% url 'view_medicines'%}">
+        <i class="align-middle" data-feather="file"></i> <span class="align-middle">Veiw Medicine</span>
+    </a>
+</li>
+
+<li class="sidebar-item">
+    <a class="sidebar-link list-group-item{% if active == 'shop' %} active{% endif %}" href="{% url 'admin_shop_list'%}">
+        <i class="align-middle" data-feather="list"></i> <span class="align-middle">Shop List</span>
+    </a>
+</li>
+<li class="sidebar-item">
+    <a class="sidebar-link list-group-item{% if active == 'company' %} active{% endif %}" href="{% url 'admin_company_list'%}">
+        <i class="align-middle" data-feather="list"></i> <span class="align-middle">Company List</span>
+    </a>
+</li>

@@ -8,10 +8,13 @@ from django.contrib import messages
 from usershop.models import ShopStock
 from activities.models import Order, Transaction, Notification
 from useradmin.models import Medicine
+
+
 # Create your views here.
 
 def shop_home(request):
     return render(request, 'usershop/home.html')
+
 
 @login_required
 def add_stock(request):
@@ -33,7 +36,7 @@ def add_stock(request):
 
 @login_required
 def view_stocks(request):
-    stocks = ShopStock.objects.filter(profile = request.user.profile)
+    stocks = ShopStock.objects.filter(profile=request.user.profile)
     querystring = ''
     if 'q' in request.GET:
         querystring = request.GET.get('q').strip()
@@ -47,6 +50,7 @@ def view_stocks(request):
     except EmptyPage:
         stocks = paginator.page(paginator.num_pages)
     return render(request, 'usershop/view_stocks.html', {'stocks': stocks, 'querystring': querystring})
+
 
 @login_required
 def view_avail_stocks(request):
@@ -73,13 +77,12 @@ def edit_stock(request, pk):
         form = StockForm(request.POST, instance=stock)
         if form.is_valid():
             form.save()
-            messages.add_message(request,
-                                 messages.SUCCESS,
-                                 'Stock was successfully updated.')
+            messages.add_message(request, messages.SUCCESS, 'Stock was successfully updated.')
 
     else:
         form = StockForm(instance=stock)
-    return render(request, 'usershop/edit_stock.html', {'form': form,'pk':pk})
+    return render(request, 'usershop/edit_stock.html', {'form': form, 'pk': pk})
+
 
 @login_required
 def delete_stock(request, pk):
@@ -87,9 +90,10 @@ def delete_stock(request, pk):
     stock.delete()
     return redirect('view_stock_shop')
 
+
 @login_required
 def view_orders(request):
-    orders = Order.objects.filter(from_user = request.user.profile).order_by('approval')
+    orders = Order.objects.filter(from_user=request.user.profile).order_by('approval')
     querystring = ''
     if 'q' in request.GET:
         querystring = request.GET.get('q').strip()
@@ -104,11 +108,13 @@ def view_orders(request):
         orders = paginator.page(paginator.num_pages)
     return render(request, 'usershop/view_orders.html', {'orders': orders, 'querystring': querystring})
 
+
 @login_required
 def delete_order(request, pk):
     stock = Order.objects.get(pk=pk)
     stock.delete()
     return redirect('view_order_shop')
+
 
 @login_required
 def view_transactions(request):
@@ -127,13 +133,14 @@ def view_transactions(request):
         trans = paginator.page(paginator.num_pages)
     return render(request, 'usershop/view_trans.html', {'trans': trans, 'querystring': querystring})
 
+
 @login_required
 def view_note(request):
     med_det = request.user.profile.get_avail_med()
     for med in med_det:
-        if(med['mcount']<10):
+        if (med['mcount'] < 10):
             Notification(notification_type=Notification.STOCK_LOW, from_user=request.user.profile,
-                         to_user=request.user.profile, medicine = Medicine.objects.get(pk=med['medicine'])).save()
+                         to_user=request.user.profile, medicine=Medicine.objects.get(pk=med['medicine'])).save()
     trans = Notification.objects.filter(to_user=request.user.profile)
     querystring = ''
     if 'q' in request.GET:

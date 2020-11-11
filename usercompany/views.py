@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from usercompany.forms import StockForm
 from django.contrib import messages
@@ -122,11 +121,11 @@ def accept_order(request, pk):
     quantity_no = order.quantity
     company_stocks = order.to_user.get_med_list(order.medicine.pk)
     for cstock in company_stocks:
-        if (quantity_no == 0):
+        if quantity_no == 0:
             break
-        if (cstock.quantity == 0):
+        if cstock.quantity == 0:
             continue
-        elif (cstock.quantity >= quantity_no):
+        elif cstock.quantity >= quantity_no:
             cstock.quantity = cstock.quantity - quantity_no
             cstock.save()
             shop_stock = ShopStock(profile=order.from_user, medicine=order.medicine, sup_date=date.today(),
@@ -147,7 +146,8 @@ def accept_order(request, pk):
                               medicine=order.medicine,
                               total_price=(int(order.quantity) * order.to_user.get_avail_med_price(order.medicine.pk)))
     transaction.save()
-    Notification(notification_type = Notification.ORDER_ACCEPTED,from_user = order.to_user,to_user = order.from_user, order = order).save()
+    Notification(notification_type=Notification.ORDER_ACCEPTED, from_user=order.to_user, to_user=order.from_user,
+                 order=order).save()
     return redirect('view_order_company')
 
 
@@ -156,8 +156,10 @@ def decline_order(request, pk):
     order = Order.objects.get(pk=pk)
     order.approval = False
     order.save()
-    Notification(notification_type = Notification.ORDER_DECLINED,from_user = order.to_user,to_user = order.from_user, order = order).save()
+    Notification(notification_type=Notification.ORDER_DECLINED, from_user=order.to_user, to_user=order.from_user,
+                 order=order).save()
     return redirect('view_order_company')
+
 
 @login_required
 def view_transactions(request):

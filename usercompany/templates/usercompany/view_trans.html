@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load static %}
 
 
 {% block title %}Company Panel{% endblock %}
@@ -8,15 +8,16 @@
 <link href="{% static 'css/useradmin.css' %}" rel="stylesheet">
 {% endblock head %}
 
+{% block side %}
+   {% include 'usercompany/partial_company_menu.html' with active='company' %}
+{% endblock %}
+
 {% block main %}
 <div class="page-header">
     <h1>Company Panel</h1>
 </div>
 <div class="row" style="margin-top: 2em">
-    <div class="col-md-3">
-        {% include 'usercompany/partial_company_menu.html' with active='company' %}
-    </div>
-    <div class="col-md-9">
+    <div class="col-md-12">
         <div class="row">
             <div class="col-md-5">
                 <h3 style="margin-top: 0">Transactions</h3>

@@ -1,18 +1,14 @@
 {% extends 'base.html' %}
 
 {% block title %}Shop Panel{% endblock %}
-
+{% block side %}
+    {% include 'usershop/partial_shop_menu.html' with active='order' %}
+{% endblock %}
 {% block main %}
-{% load staticfiles %}
+{% load static %}
 <script src="{% static 'js/order.js' %}"></script>
-<div class="page-header">
-    <h1>Shop Panel</h1>
-</div>
-<div class="row" style="margin-top: 2em">
-    <div class="col-md-3">
-        {% include 'usershop/partial_shop_menu.html' with active='order' %}
-    </div>
-    <div class="col-md-9">
+<div class="col-12 col-xl-6">
+    <div class="">
         {% if messages %}
         {% for message in messages %}
         <div class="alert alert-success alert-dismissable">
@@ -21,11 +17,14 @@
         </div>
         {% endfor %}
         {% endif %}
-        <h3 style="margin-top: 0">Create Order</h3>
+    <div class="card-header">
+        <h3 >Create Order</h3>
+    </div>
+    <div class="card-body">
         <form role="form" class="form-horizontal" method="post" action="{% url 'create_order' %}">
             {% csrf_token %}
-            <div class="form-group">
-                <label for="medicineSelect" class="col-sm-2 control-label">Select Medicine</label>
+            <div class="mb-3 row">
+                <label for="medicineSelect" class="col-form-label col-sm-2 text-sm-right">Select Medicine</label>
                 <div class="col-sm-10">
                     <select class="form-control" id="medicineSelect" name="medicineSelect" required>
                         <option hidden disabled selected value> -- select an option --</option>
@@ -33,27 +32,30 @@
                         <option value="{{medicine.pk}}">{{medicine.name}}</option>
                         {% endfor %}
                     </select>
+
                 </div>
+
             </div>
 
             <fieldset class="form-group" id="collegeSelect">
             </fieldset>
 
             <div id="panel">
-            <div class="form-group">
-                <label for="quantity" class="col-sm-2 control-label">Quantity</label>
+            <div class="mb-3 row">
+                <label for="quantity" class="col-form-label col-sm-2 text-sm-right">Quantity</label>
                 <div class="col-sm-10">
                     <input class="form-control" type="number" id="quantity" name="quantity" required>
                 </div>
             </div>
 
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-primary">Save</button>
+            <div class="mb-3 row">
+                <div class="col-sm-10 ml-sm-auto">
+                    <button type="submit" class="btn btn-primary">Order</button>
                 </div>
             </div>
                 </div>
         </form>
+    </div>
     </div>
 </div>
 {% endblock main %}

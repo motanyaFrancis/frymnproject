@@ -1,43 +1,57 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
+<head>
+    {% load static %}
+	<meta charset="utf-8">
+       <title>{% block title %}Login{% endblock %}</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-{% block head %}
-  <link href="{% static 'css/cover.css' %}" rel="stylesheet">
-{% endblock head %}
+	<link rel="shortcut icon" href="{% static 'img/icons/icon-48x48.png' %}" />
 
-{% block main %}
-  <div class="cover">
-    {% if form.non_field_errors %}
-      {% for error in form.non_field_errors %}
-        <div class="alert alert-danger alert-dismissable">
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          {{ error }}
-        </div>
-      {% endfor %}
-    {% endif %}
-    <div class="login">
-      <h2>Log in</h2>
-      <form method="post" action="{% url 'login' %}" role="form">
-        {% csrf_token %}
-        <div class="form-group{% if form.username.errors %} has-error{% endif %}">
-          <label for="username">Username</label>
-          <input type="text" class="form-control" id="username" name="username">
-          {% for error in form.username.errors %}
-            <label class="control-label">{{ error }}</label>
-          {% endfor %}
-        </div>
-        <div class="form-group{% if form.password.errors %} has-error{% endif %}">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" name="password">
-          {% for error in form.password.errors %}
-            <label class="control-label">{{ error }}</label>
-          {% endfor %}
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-default">Log in</button>
-          <a href="{% url 'signup' %}" class="btn btn-link">Sign up for Pharmacy</a>
-        </div>
-      </form>
-    </div>
-  </div>
-{% endblock main %}
+	<title>Sign In | AdminKit Demo</title>
+
+	<link href="{% static 'css/app.css' %}" rel="stylesheet">
+</head>
+    <main class="d-flex w-100">
+		<div class="container d-flex flex-column">
+			<div class="row vh-100">
+				<div class="col-sm-10 col-md-8 col-lg-4 mx-auto d-table h-100">
+					<div class="d-table-cell align-middle">
+                        <div class="card">
+							<div class="card-body">
+								<div class="m-sm-4">
+									<div class="text-center">
+										<img src="{% static 'img/logo.png' %}" alt="logo" class="img-fluid" width="250" height="132" />
+									    <hr class="my-3 mb-4" />
+                                    </div>
+									<form method="post" action="{% url 'login' %}" role="form">
+                                        {% csrf_token %}
+										<div class="mb-3">
+											<label class="form-label">Username</label>
+											<input class="form-control form-control-lg" type="text" name="username" placeholder="Enter your username" />
+										</div>
+										<div class="mb-3">
+											<label class="form-label">Password</label>
+											<input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password" />
+
+                                            <span class="my-3">If no account yet <a href="{% url 'signup' %}">Create account</a></span>
+
+										</div>
+                                        <div class="text-center mt-3">
+											<button type="submit" class="btn btn-lg btn-primary">Sign in</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<script src="{% static 'js/app.js' %}"></script>
+

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load static %}
 
 
 {% block title %}Admin Panel{% endblock %}
@@ -18,30 +18,35 @@ background-color: transparent;
 }
 </style>
 {% endblock head %}
-
+{% block side %}
+    {% include 'useradmin/partial_admin_menu.html' with active='company' %}
+    </li>
+{% endblock %}
 {% block main %}
 <div class="page-header">
     <h1>Admin Panel</h1>
   </div>
 <div class="row" style="margin-top: 2em">
-    <div class="col-md-3">
-        {% include 'useradmin/partial_admin_menu.html' with active='company' %}
-    </div>
+
     <div class="col-md-9">
         <h3 style="margin-top: 0">Company list</h3>
         <section class="profiles">
             {% for company in companies %}
-            <div class="shop">
-                <h3>
-                    <address>
-                        <strong><a href="{% url 'profile' company.user.username%}">{{company.name}}</a></strong><br>
-                        {{company.address.line1}}, {{company.address.line2}}
-                        {{company.address.city}}, {{company.address.state}}
-                        {{company.address.country}}, {{company.address.pincode}}<br>
-                        <abbr title="Phone">P:</abbr> {{company.address.contactno}}
-                    </address>
-                </h3>
-            </div>
+                <hr class="my-3">
+                <div class="col-md-6">
+                <strong>
+                    <div class="" ><a href="{% url 'profile' company.user.username %}">{{company.name}}</a></div>
+
+
+                </strong>
+                    <p>
+                        {{company.address.line1}} {{company.address.line2}} <br>
+                        {{company.address.city}}, {{company.address.state}} <br>
+                        {{company.address.country}} <br>
+                        <abbr title="pincode">pincode:</abbr> {{company.address.pincode}}<br>
+                        <abbr title="Phone">Tel:</abbr> {{company.address.contactno}}<br>
+                    </p>
+                </div>
             {% endfor %}
         </section>
         <div class="row">

@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load static %}
 
 
 {% block title %} Shop Panel {% endblock %}
-
+{% block side %}
+    {% include 'usershop/partial_shop_menu.html' with active='home' %}
+{% endblock %}
 {% block head %}
 <link href="{% static 'css/usershop.css' %}" rel="stylesheet">
 {% endblock head %}
@@ -13,9 +15,7 @@
     <h1>Shop Panel</h1>
   </div>
 <div class="row" style="margin-top: 2em">
-    <div class="col-md-3">
-        {% include 'usershop/partial_shop_menu.html' with active='home' %}
-    </div>
+
     <div class="col-md-9">
 
     </div>

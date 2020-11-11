@@ -1,7 +1,11 @@
 from django.contrib import admin
-from authentication.models import Profile
-from authentication.models import Address
-# Register your models here.
+from authentication.models import Profile, Address
 
-admin.site.register(Profile)
+
+# Register your models here.
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('name', 'type', 'approved')
+
+
+admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Address)

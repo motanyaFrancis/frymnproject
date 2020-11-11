@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load static %}
 
 
 {% block title %}Admin Panel{% endblock %}
@@ -7,16 +7,17 @@
 {% block head %}
 <link href="{% static 'css/useradmin.css' %}" rel="stylesheet">
 {% endblock head %}
-
+{% block side %}
+    {% include 'useradmin/partial_admin_menu.html' with active='View_medicine' %}
+    </li>
+{% endblock %}
 {% block main %}
 <div class="page-header">
     <h1>Admin Panel</h1>
 </div>
 <div class="row" style="margin-top: 2em">
-    <div class="col-md-3">
-        {% include 'useradmin/partial_admin_menu.html' with active='view_medicine' %}
-    </div>
-    <div class="col-md-9">
+
+    <div class="col-md-12">
         <h3 style="margin-top: 0">Medicines</h3>
         <section class="medicines">
             <table class="table">

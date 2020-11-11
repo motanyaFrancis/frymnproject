@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.urls import path
+
 from authentication import views as peekstudy_auth_views
 from core import views as core_views
 from django.contrib.auth import views as auth_views
@@ -26,14 +28,13 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', core_views.home, name='home'),
     url(r'^home/$', core_views.home_main, name='home_main'),
-#auth urls
-    url(r'^login/', auth_views.login, {'template_name': 'core/cover.html'},
-        name='login'),
-    url(r'^logout/', auth_views.logout, {'next_page': '/'}, name='logout'),
+    # auth urls
+    url(r'^login/', auth_views.LoginView.as_view(template_name='core/cover.html'), name='login'),
+    url(r'^logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
     url(r'^signup/$', peekstudy_auth_views.signup, name='signup'),
     url(r'^signupdetailed/$', peekstudy_auth_views.signupdetailed, name='signupdetailed'),
 
-#account urls
+    # account urls
     url(r'^settings/$', core_views.settings, name='settings'),
     url(r'^settings/picture/$', core_views.picture, name='picture'),
     url(r'^settings/upload_picture/$', core_views.upload_picture,
@@ -42,22 +43,24 @@ urlpatterns = [
         name='save_uploaded_picture'),
     url(r'^settings/password/$', core_views.password, name='password'),
 
-#admin url
+    # admin url
     url(r'^useradmin/', include('useradmin.urls')),
 
-#company url
+    # company url
     url(r'^usercompany/', include('usercompany.urls')),
 
-#shop url
+    # shop url
     url(r'^usershop/', include('usershop.urls')),
 
-    url(r'^activities/', include('activities.urls')),
+    path('activities/', include('activities.urls')),
 
-    url(r'^search/$', search_views.search, name='search'),
+    path('search/', search_views.search, name='search'),
 
-    url(r'^user/(?P<username>[^/]+)/$', core_views.profile, name='profile'),
+    path('user/<slug:username>', core_views.profile, name='profile')
+
+
+
 ]
-
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 from authentication.forms import SignUpForm, SignUpFormDetailed, AddressForm
 
+
 # Create your views here.
 
 
@@ -31,12 +32,13 @@ def signup(request):
         return render(request, 'authentication/signup.html',
                       {'form': SignUpForm()})
 
-@login_required()
+
+@login_required
 def signupdetailed(request):
     if request.user.profile.type:
         return redirect('/')
-    if request.method == 'POST' :
-        form1 = SignUpFormDetailed(request.POST,instance=request.user.profile)
+    if request.method == 'POST':
+        form1 = SignUpFormDetailed(request.POST, instance=request.user.profile)
         form2 = AddressForm(request.POST)
         if not form1.is_valid():
             return render(request, 'authentication/signupdetailed.html',
@@ -52,3 +54,6 @@ def signupdetailed(request):
         return render(request, 'approve.html')
     return render(request, 'authentication/signupdetailed.html',
                   {'form1': SignUpFormDetailed(), 'form2': AddressForm()})
+
+
+

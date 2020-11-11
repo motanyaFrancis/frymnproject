@@ -1,15 +1,13 @@
 {% extends 'base.html' %}
 
 {% block title %}Admin Panel{% endblock %}
-
+{% block side %}
+    {% include 'useradmin/partial_admin_menu.html' with active='add_medicine' %}
+    </li>
+{% endblock %}
 {% block main %}
-  <div class="page-header">
-    <h1>Admin Panel</h1>
-  </div>
   <div class="row" style="margin-top: 2em">
-    <div class="col-md-3">
-      {% include 'useradmin/partial_admin_menu.html' with active='add_medicine' %}
-    </div>
+
     <div class="col-md-9">
       {% if messages %}
         {% for message in messages %}
@@ -20,11 +18,12 @@
         {% endfor %}
       {% endif %}
       <h3 style="margin-top: 0">Add Medicine</h3>
+    <div class="card-body">
       <form role="form" class="form-horizontal" method="post" action="{% url 'add_medicine' %}">
         {% csrf_token %}
         {% for field in form.visible_fields %}
-          <div class="form-group{% if field.errors %} has-error{% endif %}">
-            <label for="{{ field.label }}" class="col-sm-2 control-label">{{ field.label }}</label>
+          <div class="mb-3 row {% if field.errors %} has-error{% endif %}">
+            <label class="form-label" for="{{ field.label }}" class="col-sm-2 control-label">{{ field.label }}</label>
             <div class="col-sm-10">
               {{ field }}
               {% if field.help_text %}
@@ -43,6 +42,7 @@
           </div>
         </div>
       </form>
+    </div>
     </div>
   </div>
 {% endblock main %}

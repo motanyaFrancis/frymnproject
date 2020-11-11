@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.models import User
+from requests import auth
+
 from core.forms import ChangePasswordForm, ProfileForm
 from django.conf import settings as django_settings
 from django.contrib import messages
@@ -15,17 +17,16 @@ from usershop.views import shop_home
 from usercompany.views import company_home
 
 
-
 # Create your views here.
 def home(request):
-    if request.user.is_authenticated() and request.user.is_staff:
+    if request.user.is_authenticated and request.user.is_staff:
         return admin_home(request)
-    elif request.user.is_authenticated() and not request.user.profile.type:
+    elif request.user.is_authenticated and not request.user.profile.type:
         return redirect('/signupdetailed')
-    elif request.user.is_authenticated() and not request.user.profile.approved:
+    elif request.user.is_authenticated and not request.user.profile.approved:
         logout(request)
         return render(request, 'approve.html')
-    elif request.user.is_authenticated():
+    elif request.user.is_authenticated:
         if request.user.profile.type == 'S':
             return shop_home(request)
         if request.user.profile.type == 'C':
@@ -33,16 +34,16 @@ def home(request):
     else:
         return render(request, 'core/cover.html')
 
+
 def home_main(request):
-        return render(request, 'core/main.html')
+    return render(request, 'core/main.html')
 
 
 def profile(request, username):
     page_user = get_object_or_404(User, username=username)
     return render(request, 'core/profile.html', {
         'page_user': page_user,
-        })
-
+    })
 
 
 @login_required
@@ -118,11 +119,11 @@ def upload_picture(request):
             im.thumbnail(new_size, Image.ANTIALIAS)
             im.save(filename)
 
-        return redirect('/settings/picture/?upload_picture=uploaded')
+        return redirect('/settings/?upload_picture=uploaded')
 
     except Exception as e:
         print(e)
-        return redirect('/settings/picture/')
+        return redirect('/settings/')
 
 
 @login_required
@@ -132,12 +133,12 @@ def save_uploaded_picture(request):
         y = int(request.POST.get('y'))
         w = int(request.POST.get('w'))
         h = int(request.POST.get('h'))
-        tmp_filename = django_settings.MEDIA_ROOT + '/profile_pictures/' +\
-            request.user.username + '_tmp.jpg'
-        filename = django_settings.MEDIA_ROOT + '/profile_pictures/' +\
-            request.user.username + '.jpg'
+        tmp_filename = django_settings.MEDIA_ROOT + '/profile_pictures/' + \
+                       request.user.username + '_tmp.jpg'
+        filename = django_settings.MEDIA_ROOT + '/profile_pictures/' + \
+                   request.user.username + '.jpg'
         im = Image.open(tmp_filename)
-        cropped_im = im.crop((x, y, w+x, h+y))
+        cropped_im = im.crop((x, y, w + x, h + y))
         cropped_im.thumbnail((200, 200), Image.ANTIALIAS)
         cropped_im.save(filename)
         os.remove(tmp_filename)
@@ -145,4 +146,4 @@ def save_uploaded_picture(request):
     except Exception:
         pass
 
-    return redirect('/settings/picture/')
+    return redirect('/settings/')
