@@ -1,8 +1,9 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
+from django.urls import path
 
 from activities import views
 
 urlpatterns = [
-    url(r'^orders/create$', views.create_order, name='create_order'),
-    url(r'^orders/get_company_list$', views.get_company_list, name='get_company_list_order'),
+    path('orders/create/', views.create_order, name='create_order'),
+    path('orders/get_company_list', views.get_company_list, name='get_company_list'),
 ]

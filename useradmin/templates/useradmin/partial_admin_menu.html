@@ -1,4 +1,10 @@
 <li class="sidebar-item">
+    <a class="sidebar-link list-group-item" href="/admin">
+        <i class="align-middle" data-feather="cpu"></i> <span class="align-middle">Admin</span>
+    </a>
+</li>
+
+<li class="sidebar-item">
     <a class="sidebar-link list-group-item{% if active == 'approve' %} active{% endif %}" href="{% url 'admin_home'%}">
         <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Approve profile</span>
     </a>

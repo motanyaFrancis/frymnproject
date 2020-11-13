@@ -1,11 +1,41 @@
 <li class="sidebar-item">
+    <a class="sidebar-link list-group-item{% if active == 'home' %} active{% endif %}" href="/">
+        <i class="align-middle" data-feather="home"></i> <span class="align-middle">Home</span>
+    </a>
+</li>
+
+<li class="sidebar-item">
+    <a class="sidebar-link list-group-item{% if active == 'user' %} active{% endif %}" href="{% url 'profile' user.username %}">
+        <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
+    </a>
+</li>
+
+<li class="sidebar-item">
     <a class="sidebar-link list-group-item{% if active == 'profile' %} active{% endif %}" href="{% url 'settings'%}">
-        <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Account</span>
+        <i class="align-middle" data-feather="edit"></i> <span class="align-middle">Edit profile</span>
     </a>
 </li>
 
 <li class="sidebar-item">
     <a class="sidebar-link list-group-item{% if active == 'password' %} active{% endif %}" href="{% url 'password'%}">
         <i class="align-middle" data-feather="user"></i> <span class="align-middle">Password</span>
+    </a>
+</li>
+
+<li class="sidebar-item">
+    <a class="sidebar-link list-group-item{% if active == 'privacy' %} active{% endif %}" href="#">
+        <i class="align-middle" data-feather="shield"></i> <span class="align-middle">Privacy & Safety</span>
+    </a>
+</li>
+
+<li class="sidebar-item">
+    <a class="sidebar-link list-group-item{% if active == 'privacy' %} active{% endif %}" href="#">
+        <i class="align-middle" data-feather="help-circle"></i> <span class="align-middle">Help Center</span>
+    </a>
+</li>
+
+<li class="sidebar-item">
+    <a class="sidebar-link list-group-item{% if active == 'privacy' %} active{% endif %}" href="#">
+        <i class="align-middle" data-feather="book-open"></i> <span class="align-middle">Terms of service</span>
     </a>
 </li>

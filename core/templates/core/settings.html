@@ -9,9 +9,9 @@
         <div class="card-header">
              {% if messages %}
                 {% for message in messages %}
-                  <div class="alert alert-success alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    {{ message }}
+                  <div class="alert alert-success alert-dismissible" role="alert">
+                      <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                      <div class="alert-message">{{ message }}</div>
                   </div>
                 {% endfor %}
               {% endif %}

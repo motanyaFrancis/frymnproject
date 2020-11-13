@@ -8,30 +8,12 @@
 {% endblock %}
 {% block head %}
 <link href="{% static 'css/useradmin.css' %}" rel="stylesheet">
-<style>
-    ul.all-notifications .user-picture {
-  width: 40px;
-  float: left;
-}
-ul.all-notifications li div {
-  margin-left: 40px;
-  padding-left: 1em;
-}
-ul.all-notifications li {
-  list-style: none;
-  border-bottom: 1px solid #eeeeee;
-  padding: .8em 0;
-}
-</style>
 {% endblock head %}
 
 {% block main %}
-<div class="page-header">
-    <h1>Shop Panel</h1>
-</div>
-<div class="row" style="margin-top: 2em">
+<div class="row">
 
-    <div class="col-md-9">
+    <div class="col-md-12 card">
         <div class="row">
             <div class="col-md-5">
                 <h3 style="margin-top: 0">Notifications</h3>
@@ -47,19 +29,23 @@ ul.all-notifications li {
                 </form>
             </div>
         </div>
-        <ul class="all-notifications">
-    {% for notification in trans %}
-      <li class="clearfix">
-        <a href="{% url 'profile' notification.from_user.name %}"><img src="{{ notification.from_user.get_picture }}" class="user-picture"></a>
-        <div>
-          <small>{{ notification.date }}</small>
-          <p>{{ notification|safe }}</p>
-        </div>
-      </li>
-    {% empty %}
-      <li>You have no notification</li>
-    {% endfor %}
-  </ul>
+            <div class="card-body">
+                {% for notification in trans %}
+                <div class="d-flex align-items-start">
+                    <img src="{{ notification.from_user.get_picture }}" width="36" height="36" class="rounded-circle mr-2" class="user-picture">
+                    <div class="flex-grow-1">
+                        <strong>{{ notification|safe }}</strong><br>
+                        <small class="text-muted">{{ notification.date }}</small><br />
+
+                    </div>
+                </div>
+                <hr />
+                {% empty %}
+                <div>
+                    You have no notification
+                </div>
+                {% endfor %}
+            </div>
         <div class="row">
             <div class="col-md-12">
                 {% include 'paginator.html' with paginator=trans %}

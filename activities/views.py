@@ -21,9 +21,7 @@ def create_order(request):
         order = Order(from_user=request.user.profile, to_user=Profile.objects.get(pk=optionsRadios),
                       medicine=Medicine.objects.get(pk=medicinevalue), quantity=quantity)
         order.save()
-        messages.add_message(request,
-                             messages.SUCCESS,
-                             'Order was successfully placed.')
+        messages.add_message(request, messages.SUCCESS, 'Order was successfully placed.')
     medicines = Medicine.get_medicines()
     return render(request, 'activities/create_order.html', {'medicines': medicines})
 
@@ -32,11 +30,11 @@ def create_order(request):
 @ajax_required
 def get_company_list(request):
     medicinevalue = request.GET.get('medicinevalue', None)
-    company_list = CompanyStock.objects.filter(medicine__pk=medicinevalue).filter(exp_date__gt=date.today())
+    company_list = CompanyStock.objects.filter(medicine__pk=medicinevalue).filter(exp_date_gt=date.today())
     html = ''
-    html = '{0}{1}'.format(html,
-                           render_to_string('activities/company_list.html',
-                                            {
-                                                'company_list': company_list,
-                                            }))
+    html = '{0}{1}'.format(
+        html, render_to_string('activities/company_list.html',
+                               {
+                                   'company_list': company_list,
+                               }))
     return HttpResponse(html)

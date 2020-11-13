@@ -1,19 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
 {% load static %}
-    <meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <title>{% block title %}Pharmacy{% endblock %}</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-	<meta name="author" content="AdminKit">
-	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
-
-	<link rel="shortcut icon" href="{% static 'img/icons/icon-48x48.png' %}" />
-    {% block head %}{% endblock %}
-    <link href="{% static 'css/app.css' %}" rel="stylesheet">
-</head>
+{% include 'head.html' %}
 <body>
 {% block body %}
 {% if user.is_authenticated %}
@@ -47,10 +35,13 @@
                                 <i class="align-middle" data-feather="settings"></i>
                             </a>
 
-							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
-                                <img src="{{ user.profile.get_picture }}" class="avatar img-fluid rounded mr-5" alt="profile" /> <span class="text-dark">{{ user.profile.get_screen_name }}</span>
+                            <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
+                                <span class="text-dark">{{ user.profile.get_screen_name }}</span>
                             </a>
-							<div class="dropdown-menu dropdown-menu-right">
+                            <a href="{% url 'profile' user.username %}">
+                                <img src="{{ user.profile.get_picture }}" class="avatar img-fluid rounded-circle mr-5" alt="profile" />
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
 								<a class="dropdown-item" href="{% url 'profile' user.username %}"><i class="align-middle mr-1" data-feather="user"></i> Profile</a>
 								<div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/"><i class="align-middle mr-1" data-feather="book-open"></i> Terms of service</a>
@@ -59,6 +50,7 @@
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="{% url 'logout' %}"><i class="align-middle mr-1" data-feather="log-out"></i>Log out</a>
 							</div>
+
 						</li>
 
 					</ul>
@@ -81,6 +73,33 @@
 
 				</div>
 			</main>
+            <footer class="footer">
+				<div class="container-fluid">
+					<div class="row text-muted">
+						<div class="col-6 text-left">
+							<p class="mb-0">
+                                <a href="#" class="text-muted"> &copy; <strong>Copyright 2020 frymn</strong></a>
+							</p>
+						</div>
+						<div class="col-6 text-right">
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<a class="text-muted" href="#">Support</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="#">Help Center</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="#" Privacy</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="#">Terms</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
 		</div>
 	</div>
 {% endif %}

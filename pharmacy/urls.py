@@ -37,20 +37,18 @@ urlpatterns = [
     # account urls
     url(r'^settings/$', core_views.settings, name='settings'),
     url(r'^settings/picture/$', core_views.picture, name='picture'),
-    url(r'^settings/upload_picture/$', core_views.upload_picture,
-        name='upload_picture'),
-    url(r'^settings/save_uploaded_picture/$', core_views.save_uploaded_picture,
-        name='save_uploaded_picture'),
-    url(r'^settings/password/$', core_views.password, name='password'),
-
+    path('setting/picture/', core_views.picture, name='picture'),
+    path('settings/upload_picture', core_views.upload_picture, name='upload_picture'),
+    path('settings/save_uploaded_picture/', core_views.save_uploaded_picture, name='save_uploaded_picture'),
+    path('settings/password/', core_views.password, name='password'),
     # admin url
-    url(r'^useradmin/', include('useradmin.urls')),
+    path('useradmin/', include('useradmin.urls')),
 
     # company url
-    url(r'^usercompany/', include('usercompany.urls')),
+    path('usercompany/', include('usercompany.urls')),
 
     # shop url
-    url(r'^usershop/', include('usershop.urls')),
+    path('usershop/', include('usershop.urls')),
 
     path('activities/', include('activities.urls')),
 
