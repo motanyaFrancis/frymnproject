@@ -4,7 +4,6 @@ import os.path
 from django.conf import settings
 from django.contrib.auth.models import User
 
-
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.db.models import Max
@@ -82,12 +81,12 @@ class Profile(models.Model):
     def get_avail_med(self):
         from usershop.models import ShopStock
         from usercompany.models import CompanyStock
-        if (self.get_type() == 'Shop'):
+        if self.get_type() == 'Shop':
             stock = ShopStock.objects.filter(profile=self).filter(exp_date__gt=date.today()).values('medicine',
                                                                                                     'medicine__name').annotate(
                 mcount=(Sum('quantity') - Sum('sold')))
             return stock
-        elif (self.get_type() == 'Company'):
+        elif self.get_type() == 'Company':
             stock = CompanyStock.objects.filter(profile=self).filter(exp_date__gt=date.today()).values('medicine',
                                                                                                        'medicine__name').annotate(
                 mcount=(Sum('quantity') - Sum('sold')))
@@ -104,7 +103,7 @@ class Profile(models.Model):
         stock = self.get_med_list(med)
         stock = stock.aggregate(price=Max('price'))
         if stock['price'] is None:
-            stock['price'] = 0;
+            stock['price'] = 0
         return int(stock['price'])
 
     @staticmethod

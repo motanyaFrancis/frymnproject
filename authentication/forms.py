@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from authentication.models import Profile, Address
 from django.core.exceptions import ValidationError
 
+
 def ForbiddenUsernamesValidator(value):
     forbidden_usernames = ['admin', 'settings', 'news', 'about', 'help',
                            'signin', 'signup', 'signout', 'terms', 'privacy',
@@ -96,6 +97,7 @@ class SignUpFormDetailed(forms.ModelForm):
         required=True,
         widget=forms.Select(attrs={'class': 'form-control'}),
     )
+
     class Meta:
         model = Profile
         fields = ['name', 'license_id', 'type']
@@ -106,31 +108,31 @@ class AddressForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         max_length=30,
         required=True,
-        )
+    )
     line2 = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         max_length=30,
         required=True,
-        )
+    )
     city = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         max_length=30,
         required=True,
-        )
+    )
     state = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         max_length=30,
         required=True,
-        )
+    )
     country = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         max_length=30,
         required=True,
-        )
+    )
     pincode = forms.IntegerField(
         widget=forms.NumberInput(attrs={'class': 'form-control'}),
         max_value=700000,
-        )
+    )
     contactno = forms.IntegerField(
         widget=forms.NumberInput(attrs={'class': 'form-control'}),
         max_value=100000000000,
@@ -144,4 +146,3 @@ class AddressForm(forms.ModelForm):
     class Meta:
         model = Address
         fields = ['line1', 'line2', 'city', 'state', 'country', 'pincode', 'contactno', 'email']
-

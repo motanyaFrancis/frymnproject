@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% include 'head.html' %}
+<body>
+{% block body %}
+{% if user.is_authenticated %}
+<div class="wrapper">
+<!--   side bar    -->
+		<nav id="sidebar" class="sidebar">
+
+			<div class="sidebar-content js-simplebar">
+				<a class="sidebar-brand" href="/">
+                  <span class="align-middle">
+                      <img src="{% static './logo.png' %}" class="img-fluid " alt="frymn-logo" />
+                  </span>
+                    <hr style="color:#7b7031; height: 3px" />
+                </a>
+
+                <ul class="sidebar-nav">
+                    {% block side %}{% endblock %}
+                </ul>
+			</div>
+
+		</nav>
+<!--   main area     -->
+		<div class="main">
+			<nav class="navbar navbar-expand navbar-light navbar-bg">
+				<a class="sidebar-toggle d-flex">
+                  <i class="hamburger align-self-center"></i>
+                </a>
+                <h1 class="col-md-6" style="font-family: 'Calibri Light'; color: #7b7031">{{ user.profile.name }}</h1>
+				<div class="navbar-collapse collapse">
+					<ul class="navbar-nav navbar-align">
+
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-toggle="dropdown">
+                                <i class="align-middle" data-feather="settings"></i>
+                            </a>
+
+                            <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
+                                <span class="text-dark">{{ user.profile.get_screen_name }}</span>
+                            </a>
+                            <a href="{% url 'profile' user.username %}">
+                                <img src="{{ user.profile.get_picture }}" class="avatar img-fluid rounded-circle mr-5" alt="{{user.first_name}} {{ user.last_name }}" />
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+								<a class="dropdown-item" href="{% url 'profile' user.username %}"><i class="align-middle mr-1" data-feather="user"></i> Profile</a>
+								<div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/"><i class="align-middle mr-1" data-feather="book-open"></i> Terms of service</a>
+                                <a class="dropdown-item" href="/"><i class="align-middle mr-1" data-feather="help-circle"></i> Help </a>
+								<a class="dropdown-item" href="{% url 'settings' %}"><i class="align-middle mr-1" data-feather="settings"></i> Settings & Privacy</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="{% url 'logout' %}"><i class="align-middle mr-1" data-feather="log-out"></i>Log out</a>
+							</div>
+
+						</li>
+
+					</ul>
+				</div>
+			</nav>
+
+			<main class="content">
+				<div class="container-fluid p-0">
+					<div class="row">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-header">
+                                    {% block main %} {% endblock %}
+								</div>
+								<div class="card-body">
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</main>
+            <footer class="footer">
+				<div class="container-fluid">
+					<div class="row text-muted">
+						<div class="col-6 text-left">
+							<p class="mb-0">
+                                <a href="#" class="text-muted"> &copy; <strong>Copyright 2020 frymn Co.</strong></a>
+							</p>
+						</div>
+						<div class="col-6 text-right">
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<a class="text-muted" href="#">Support</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="#">Help Center</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="#"> Privacy</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="#">Terms</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+{% endif %}
+{% endblock %}
+<script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>

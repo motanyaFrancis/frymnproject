@@ -9,8 +9,16 @@
                         <div class="card-body">
                             <div class="m-sm-4">
                                 <div class="text-center">
-                                    <img src="{% static 'img/logo.png' %}" alt="logo" class="img-fluid" width="250" height="132" />
+                                    <img src="{% static 'logo.png' %}" alt="logo" class="img-fluid" width="250" height="132" />
                                     <hr class="my-3 mb-4" />
+                                    {% if messages %}
+                                        {% for message in messages %}
+                                          <div class="alert alert-success alert-dismissible" role="alert">
+                                              <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                                              <div class="alert-message">{{ message }}</div>
+                                          </div>
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
                                 <form method="post" action="{% url 'login' %}" role="form">
                                     {% csrf_token %}
@@ -21,9 +29,9 @@
                                     <div class="mb-3">
                                         <label class="form-label">Password</label>
                                         <input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password" />
-
-                                        <span class="my-3">If no account yet <a href="{% url 'signup' %}">Create account</a></span>
-
+                                        <div class="mb-3">
+                                            <span class="my-3 b">New to this site?  <a href="{% url 'signup' %}">Create account</a></span>
+                                        </div>
                                     </div>
                                     <div class="text-center mt-3">
                                         <button type="submit" class="btn btn-lg btn-primary">Sign in</button>

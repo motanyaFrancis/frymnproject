@@ -11,28 +11,26 @@
 {% endblock head %}
 
 {% block main %}
-<div class="page-header">
-    <h1>Shop Panel</h1>
-</div>
-<div class="row" style="margin-top: 2em">
-       <div class="col-md-9">
+
+<div class="row">
+       <div class="col-md-12">
         <div class="row">
             <div class="col-md-5">
-                <h3 style="margin-top: 0">Orders</h3>
+                <h3>Orders</h3>
             </div>
             <div class="col-md-7">
                 <form role="search" action="{% url 'view_order_shop' %}">
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="q" placeholder="Search Company" value="{{ querystring }}">
-                        <span class="input-group-btn">
-              <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-            </span>
-                    </div>
+                   <div class="input-group input-group-navbar">
+						<input type="text" class="form-control" name="q" placeholder="Search…" aria-label="Search" value="{{ querystring }}">
+						<button class="btn" type="submit">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search align-middle"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </button>
+					</div>
                 </form>
             </div>
         </div>
         <section class="orders">
-            <table class="table">
+            <table class="table table-striped">
                 <thead>
                 <tr>
                     <th>#</th>
@@ -40,7 +38,7 @@
                     <th>Medicine</th>
                     <th>Quantity</th>
                     <th>Approval</th>
-                    <th></th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -53,9 +51,11 @@
                     <td>{{order.quantity}}</td>
                     <td>{{order.approval}}</td>
                     <td>
-                        <a href="{% url 'delete_order_shop' pk=order.pk %}"
-                           onclick="return confirm('Are you sure you want to delete?')">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&nbsp; Delete
+                        <a href="{% url 'delete_stock_shop' pk=order.pk %}" onclick="return confirm('Are you sure you want to delete?')" title="Delete">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash align-middle">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            </svg>
                         </a>
                     </td>
                 </tr>

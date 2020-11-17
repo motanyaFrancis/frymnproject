@@ -1,11 +1,12 @@
-$(function () {
 
-  var jcrop_api,
+$(window).load(function () {
+
+  let jcrop_api,
       boundx,
       boundy,
       xsize = 200,
       ysize = 200;
-  
+
   $("#crop-picture").Jcrop({
     aspectRatio: xsize / ysize,
     onSelect: updateCoords,
