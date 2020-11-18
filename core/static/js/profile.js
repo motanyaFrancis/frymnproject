@@ -1,4 +1,4 @@
-$(function(){
+$(window).load(function(){
 
     $("#approvebtn").click(function(){
     var username = $(this).attr("username");
