@@ -1,4 +1,4 @@
-$(function () {
+$(window).load(function () {
 
     $('#medicineSelect').on('change', function() {
         let medicineValue = this.value;

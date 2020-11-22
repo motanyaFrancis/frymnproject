@@ -2,103 +2,114 @@
 {% load static %}
 {% block title %}Account Settings{% endblock %}
 {% block side %}
-    {% include 'core/partial_settings_menu.html' with active='profile' %}
 {% endblock %}
 {% block main %}
-    <div >
-        <div class="card-header">
-             {% if messages %}
-                {% for message in messages %}
-                  <div class="alert alert-success alert-dismissible" role="alert">
-                      <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
-                      <div class="alert-message">{{ message }}</div>
-                  </div>
-                {% endfor %}
-              {% endif %}
-            <h1 class="card-title mb-0">User Profile</h1>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-8">
-                    <form role="form" enctype="multipart/form-data" class="form-horizontal" method="post" action="{% url 'settings' %}">
-                        {% csrf_token %}
+<div class="row">
+    <div class="col-md-3">
+      <div class="card">
+          <div class="card-header">
+              <h5 class="card-title mb-0">Settings</h5>
+          </div>
+          <div class="card-body">
+              {% include 'core/partial_settings_menu.html' with active='profile' %}
+          </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+    <div class="card-header">
+         {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-success alert-dismissible" role="alert">
+                  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                  <div class="alert-message">{{ message }}</div>
+              </div>
+            {% endfor %}
+          {% endif %}
+        <h1 class="card-title mb-0">User Profile</h1>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-8">
+                <form role="form" enctype="multipart/form-data" class="form-horizontal" method="post" action="{% url 'settings' %}">
+                    {% csrf_token %}
 
-                        <div class="row">
+                    <div class="row">
 
-                            <div class="col-md-12">
-                                 {% for field in form.visible_fields %}
-                                <div class="mb-3">
-                                    <label for="{{ field.label }}" class="form-label" for="inputFirstName">{{ field.label }}</label>
-                                    <div class="col-sm-11">
-                                      {{ field }}
-                                      {% if field.help_text %}
-                                        <span class="help-block">{{ field.help_text }}</span>
-                                      {% endif %}
-                                      {% for error in field.errors %}
-                                        <label class="control-label">{{ error }}</label>
-                                      {% endfor %}
-                                    </div>
+                        <div class="col-md-12">
+                             {% for field in form.visible_fields %}
+                            <div class="mb-3">
+                                <label for="{{ field.label }}" class="form-label" for="inputFirstName">{{ field.label }}</label>
+                                <div class="col-sm-11">
+                                  {{ field }}
+                                  {% if field.help_text %}
+                                    <span class="help-block">{{ field.help_text }}</span>
+                                  {% endif %}
+                                  {% for error in field.errors %}
+                                    <label class="control-label">{{ error }}</label>
+                                  {% endfor %}
                                 </div>
-                                {% endfor %}
                             </div>
+                            {% endfor %}
                         </div>
+                    </div>
 
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <img alt="{{ user.username }}" src="{{ user.profile.get_picture }}" class="rounded-circle img-responsive mt-2" width="128" height="128" />
+
+                    <form enctype="multipart/form-data" method="post" action="{% url 'upload_picture' %}" id="picture-upload-form">
+                        {% csrf_token %}
+                        <input type="file" name="picture" style="display: none" >
+                        <div class="mt-2">
+                            <button type="button" class="btn btn-primary" id="btn-upload-picture"><i class="fas fa-upload"></i> Upload</button>
+                        </div>
+                        <small>For best results, use an image at least 128px by 128px in .jpg format</small>
                     </form>
-                </div>
-                <div class="col-md-4">
-                    <div class="text-center">
-                        <img alt="{{ user.username }}" src="{{ user.profile.get_picture }}" class="rounded-circle img-responsive mt-2" width="128" height="128" />
-
-                        <form enctype="multipart/form-data" method="post" action="{% url 'upload_picture' %}" id="picture-upload-form">
-                            {% csrf_token %}
-                            <input type="file" name="picture" style="display: none" >
-                            <div class="mt-2">
-                                <button type="button" class="btn btn-primary" id="btn-upload-picture"><i class="fas fa-upload"></i> Upload</button>
-                            </div>
-                            <small>For best results, use an image at least 128px by 128px in .jpg format</small>
-                        </form>
-                         {% if uploaded_picture %}
-                            <form method="post" action="{% url 'save_uploaded_picture' %}">
-                              {% csrf_token %}
-                              <div class="modal fade" id="modal-upload-picture">
-                                <div class="modal-dialog">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                      <h4 class="modal-title">Crop Picture</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                      <div class="selected-picture">
-                                        <p>Crop the profile picture and then click on the <strong>Save Picture</strong> button</p>
-                                        <img src="{% get_media_prefix %}profile_pictures/{{ user.username }}_tmp.jpg?_={% now 'U' %}" id="crop-picture">
-                                        <input type="hidden" id="x" name="x" />
-                                        <input type="hidden" id="y" name="y" />
-                                        <input type="hidden" id="w" name="w" />
-                                        <input type="hidden" id="h" name="h" />
-                                      </div>
-                                      <script type="text/javascript">
-                                        $(function () {
-                                          $("#modal-upload-picture").modal();
-                                          window.history.pushState("", "", "/settings/");
-                                        });
-                                      </script>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                      <button type="submit" class="btn btn-primary">Save changes</button>
-                                    </div>
+                     {% if uploaded_picture %}
+                        <form method="post" action="{% url 'save_uploaded_picture' %}">
+                          {% csrf_token %}
+                          <div class="modal fade" id="modal-upload-picture">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                  <h4 class="modal-title">Crop Picture</h4>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="selected-picture">
+                                    <p>Crop the profile picture and then click on the <strong>Save Picture</strong> button</p>
+                                    <img src="{% get_media_prefix %}profile_pictures/{{ user.username }}_tmp.jpg?_={% now 'U' %}" id="crop-picture">
+                                    <input type="hidden" id="x" name="x" />
+                                    <input type="hidden" id="y" name="y" />
+                                    <input type="hidden" id="w" name="w" />
+                                    <input type="hidden" id="h" name="h" />
                                   </div>
+                                  <script type="text/javascript">
+                                    $(function () {
+                                      $("#modal-upload-picture").modal();
+                                      window.history.pushState("", "", "/settings/");
+                                    });
+                                  </script>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                  <button type="submit" class="btn btn-primary">Save changes</button>
                                 </div>
                               </div>
-                            </form>
-                         {% endif %}
+                            </div>
+                          </div>
+                        </form>
+                     {% endif %}
 
-                    </div>
                 </div>
             </div>
-
         </div>
+
     </div>
-    {% include 'script.html' %}
+</div>
+</div>
+{% include 'script.html' %}
 {% endblock main %}

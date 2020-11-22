@@ -12,7 +12,7 @@
 			<div class="sidebar-content js-simplebar">
 				<a class="sidebar-brand" href="/">
                   <span class="align-middle">
-                      <img src="{% static './logo.png' %}" class="img-fluid " alt="frymn-logo" />
+                      <img src="{% static 'logo.png' %}" class="img-fluid " alt="frymn-logo" />
                   </span>
                     <hr style="color:#7b7031; height: 3px" />
                 </a>
@@ -27,9 +27,9 @@
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle d-flex">
-                  <i class="hamburger align-self-center"></i>
+                  <i class="align-self-center" data-feather="menu"></i>
                 </a>
-                <h1 class="col-md-6" style="font-family: 'Calibri Light'; color: #7b7031">{{ user.profile.name }}</h1>
+                <h1 class="col-md-6 align-self-center align-middle" style="font-family: 'Calibri Light'; color: #7b7031">{{ user.profile.name }}</h1>
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
 
@@ -66,7 +66,9 @@
 						<div class="col-12">
 							<div class="card">
 								<div class="card-header">
-                                    {% block main %} {% endblock %}
+                                    {% block main %}
+
+                                    {% endblock %}
 								</div>
 								<div class="card-body">
 								</div>

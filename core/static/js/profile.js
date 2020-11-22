@@ -1,8 +1,8 @@
 $(window).load(function(){
 
     $("#approvebtn").click(function(){
-    var username = $(this).attr("username");
-    var csrf = $(this).attr("csrf");
+    let username = $(this).attr("username");
+    let csrf = $(this).attr("csrf");
     $.ajax({
       url: '/useradmin/approve/',
       data: {

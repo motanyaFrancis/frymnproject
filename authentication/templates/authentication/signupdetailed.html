@@ -35,7 +35,6 @@
                                       {% endfor %}
                                         {% for field in form2.visible_fields %}
                                         <div class="mb-3 row{% if field.errors %} has-error{% endif %}">
-                                            <span>Address</span>
                                             <hr/>
                                           <label class="form-label" for="{{ field.label }}">{{ field.label }}</label>
                                           {{ field }}

@@ -1,47 +1,47 @@
-<li class="sidebar-item">
-    <a class="sidebar-link list-group-item{% if active == 'home' %} active{% endif %}" href="{% url 'shop_home'%}">
+<li class="sidebar-item{% if active == 'home' %} active{% endif %}">
+    <a class="sidebar-link list-group-item" href="{% url 'shop_home'%}">
         <i class="align-middle" data-feather="home"></i> <span class="align-middle">Home</span>
     </a>
 </li>
 
-<li class="sidebar-item">
-    <a class="sidebar-link list-group-item{% if active == 'stock' %} active{% endif %}" href="{% url 'add_stock_shop'%}">
+<li class="sidebar-item{% if active == 'stock' %} active{% endif %}">
+    <a class="sidebar-link list-group-item" href="{% url 'add_stock_shop'%}">
         <i class="align-middle" data-feather='shopping-bag'></i> <span class="align-middle">Add Stock</span>
     </a>
 </li>
 
-<li class="sidebar-item">
-    <a class="sidebar-link list-group-item{% if active == 'stock' %} active{% endif %}" href="{% url 'view_stock_shop'%}">
+<li class="sidebar-item{% if active == 'stock-view' %} active{% endif %}">
+    <a class="sidebar-link list-group-item" href="{% url 'view_stock_shop'%}">
         <i class="align-middle" data-feather="file"></i> <span class="align-middle">Veiw Stock</span>
     </a>
 </li>
 
-<li class="sidebar-item">
-    <a class="sidebar-link list-group-item{% if active == 'stock' %} active{% endif %}" href="{% url 'view_avail_stock_shop'%}">
+<li class="sidebar-item{% if active == 'stock-avail' %} active{% endif %}">
+    <a class="sidebar-link list-group-item" href="{% url 'view_avail_stock_shop'%}">
         <i class="align-middle" data-feather="database"></i> <span class="align-middle">Check Stock availability</span>
     </a>
 </li>
 
-<li class="sidebar-item">
-    <a class="sidebar-link list-group-item{% if active == 'order' %} active{% endif %}" href="{% url 'create_order'%}">
+<li class="sidebar-item{% if active == 'order' %} active{% endif %}">
+    <a class="sidebar-link list-group-item" href="{% url 'create_order'%}">
         <i class="align-middle" data-feather="shopping-cart"></i> <span class="align-middle">Place Order</span>
     </a>
 </li>
 
-<li class="sidebar-item">
-    <a class="sidebar-link list-group-item{% if active == 'order' %} active{% endif %}" href="{% url 'view_order_shop'%}">
+<li class="sidebar-item{% if active == 'order-view' %} active{% endif %}">
+    <a class="sidebar-link list-group-item" href="{% url 'view_order_shop'%}">
         <i class="align-middle" data-feather="list"></i> <span class="align-middle">View Order</span>
     </a>
 </li>
 
-<li class="sidebar-item">
-    <a class="sidebar-link list-group-item{% if active == 'trans' %} active{% endif %}" href="{% url 'view_transactions_shop'%}">
+<li class="sidebar-item{% if active == 'trans' %} active{% endif %}">
+    <a class="sidebar-link list-group-item" href="{% url 'view_transactions_shop'%}">
         <i class="align-middle" data-feather="check-circle"></i> <span class="align-middle">View Trans</span>
     </a>
 </li>
 
-<li class="sidebar-item">
-    <a class="sidebar-link list-group-item{% if active == 'company' %} active{% endif %}" href="{% url 'view_note_shop'%}">
+<li class="sidebar-item{% if active == 'note' %} active{% endif %}">
+    <a class="sidebar-link list-group-item" href="{% url 'view_note_shop'%}">
         <i class="align-middle" data-feather="bell"></i> <span class="align-middle">Notifications</span>
     </a>
 </li>

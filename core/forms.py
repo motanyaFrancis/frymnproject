@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 
 
 class ProfileForm(forms.ModelForm):
-
     first_name = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         max_length=30,
@@ -22,6 +21,18 @@ class ProfileForm(forms.ModelForm):
         fields = ['first_name', 'last_name',
                   'email', ]
 
+
+#
+# class PictureForm(forms.ModelForm):
+#     picture = forms.ImageField(
+#         widget=forms.FileInput(attrs={'class': 'form-control'}),
+#         required=False
+#     )
+#
+#     class Meta:
+#         model = User
+#         fields = ['image']
+#
 
 class ChangePasswordForm(forms.ModelForm):
     id = forms.CharField(widget=forms.HiddenInput())

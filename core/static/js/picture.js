@@ -12,7 +12,7 @@ $(window).load(function () {
     onSelect: updateCoords,
     setSelect: [0, 0, 200, 200]
   },function(){
-    var bounds = this.getBounds();
+    let bounds = this.getBounds();
     boundx = bounds[0];
     boundy = bounds[1];
     jcrop_api = this;

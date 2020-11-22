@@ -1,28 +1,28 @@
-<li class="sidebar-item">
-    <a class="sidebar-link list-group-item{% if active == 'approve' %} active{% endif %}" href="{% url 'admin_home'%}">
+<li class="sidebar-item{% if active == 'approve' %} active{% endif %}">
+    <a class="sidebar-link list-group-item" href="{% url 'admin_home'%}">
         <i class="align-middle" data-feather="home"></i> <span class="align-middle">Home</span>
     </a>
 </li>
 
-<li class="sidebar-item">
-    <a class="sidebar-link list-group-item{% if active == 'add_medicine' %} active{% endif %}" href="{% url 'add_medicine'%}">
+<li class="sidebar-item{% if active == 'add_medicine' %} active{% endif %}">
+    <a class="sidebar-link list-group-item" href="{% url 'add_medicine'%}">
         <i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Add Medicine</span>
     </a>
 </li>
 
-<li class="sidebar-item">
-    <a class="sidebar-link list-group-item{% if active == 'view_medicine' %} active{% endif %}" href="{% url 'view_medicines'%}">
-        <i class="align-middle" data-feather="database"></i> <span class="align-middle">Veiw Medicine</span>
+<li class="sidebar-item{% if active == 'medicine' %} active{% endif %}">
+    <a class="sidebar-link list-group-item" href="{% url 'view_medicines'%}">
+        <i class="align-middle" data-feather="database"></i> <span class="align-middle">View Medicine</span>
     </a>
 </li>
 
-<li class="sidebar-item">
-    <a class="sidebar-link list-group-item{% if active == 'shop' %} active{% endif %}" href="{% url 'admin_shop_list'%}">
+<li class="sidebar-item{% if active == 'shop' %} active{% endif %}">
+    <a class="sidebar-link list-group-item" href="{% url 'admin_shop_list'%}">
         <i class="align-middle" data-feather="list"></i> <span class="align-middle">Shop List</span>
     </a>
 </li>
-<li class="sidebar-item">
-    <a class="sidebar-link list-group-item{% if active == 'company' %} active{% endif %}" href="{% url 'admin_company_list'%}">
+<li class="sidebar-item{% if active == 'company' %} active{% endif %}">
+    <a class="sidebar-link list-group-item" href="{% url 'admin_company_list'%}">
         <i class="align-middle" data-feather="list"></i> <span class="align-middle">Company List</span>
     </a>
 </li>
@@ -32,7 +32,7 @@
         <i class="align-middle" data-feather="cpu"></i> <span class="align-middle">Admin Configurations</span>
     </a>
 </li>
-<li class="sidebar-item">
+<li class="sidebar-item{% if active == 'settings' %} active{% endif %}">
     <a class="sidebar-link list-group-item" href="{% url 'settings' %}">
         <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Settings</span>
     </a>

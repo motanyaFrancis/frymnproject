@@ -20,7 +20,7 @@ class Profile(models.Model):
         (COMPANY, 'Company')
     )
 
-    user = models.OneToOneField(User, on_delete=models.PROTECT)
+    user = models.OneToOneField(User,related_name='profile', on_delete=models.PROTECT)
     name = models.CharField(max_length=30, blank=True)
     license_id = models.CharField(max_length=30, blank=True)
     type = models.CharField(max_length=1, choices=INSTITUTION_TYPES, blank=True)
