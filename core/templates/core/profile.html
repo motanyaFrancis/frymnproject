@@ -5,9 +5,9 @@
 {% block side %}
     {% if user.is_staff %}
             {% include 'useradmin/partial_admin_menu.html' with active='settings' %}
-        {% elif profile.type == 'company' %}
+        {% elif user.profile.type == 'C' %}
             {% include 'usercompany/partial_company_menu.html' with active='settings' %}
-        {% elif profile.type == 'shop' %}
+        {% elif user.profile.type == 'S' %}
             {% include 'usershop/partial_shop_menu.html' with active='settings' %}
     {% endif %}
 {% endblock %}

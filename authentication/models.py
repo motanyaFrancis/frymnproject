@@ -2,7 +2,7 @@ from django.db import models
 import os.path
 
 from django.conf import settings
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 
 from django.dispatch import receiver
 from django.db.models.signals import post_save
@@ -20,7 +20,7 @@ class Profile(models.Model):
         (COMPANY, 'Company')
     )
 
-    user = models.OneToOneField(User,related_name='profile', on_delete=models.PROTECT)
+    user = models.OneToOneField(User, related_name='profile', on_delete=models.PROTECT)
     name = models.CharField(max_length=30, blank=True)
     license_id = models.CharField(max_length=30, blank=True)
     type = models.CharField(max_length=1, choices=INSTITUTION_TYPES, blank=True)
@@ -38,7 +38,7 @@ class Profile(models.Model):
             filename = settings.MEDIA_ROOT + '/profile_pictures/' + \
                        self.user.username + '.jpg'
             picture_url = settings.MEDIA_URL + 'profile_pictures/' + \
-                          self.user.username + '.jpg'
+                        self.user.username + '.jpg'
             if os.path.isfile(filename):
                 return picture_url
             else:

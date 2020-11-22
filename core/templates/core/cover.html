@@ -24,11 +24,11 @@
                                     {% csrf_token %}
                                     <div class="mb-3">
                                         <label class="form-label">Username</label>
-                                        <input class="form-control form-control-lg" type="text" name="username" placeholder="Enter your username" />
+                                        <input class="form-control form-control-lg" type="text" name="username" placeholder="Enter your username" required />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Password</label>
-                                        <input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password" />
+                                        <input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password" required/>
                                         <div class="mb-3">
                                             <span class="my-3 b">New to this site?  <a href="{% url 'signup' %}">Create account</a></span>
                                         </div>

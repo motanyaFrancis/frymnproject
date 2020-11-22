@@ -45,3 +45,9 @@
         <i class="align-middle" data-feather="bell"></i> <span class="align-middle">Notifications</span>
     </a>
 </li>
+
+<li class="sidebar-item{% if active == 'settings' %} active{% endif %}">
+    <a class="sidebar-link list-group-item" href="{% url 'settings' %}">
+        <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Settings</span>
+    </a>
+</li>

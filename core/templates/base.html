@@ -4,6 +4,7 @@
 {% include 'head.html' %}
 <body>
 {% block body %}
+
 {% if user.is_authenticated %}
 <div class="wrapper">
 <!--   side bar    -->
@@ -25,7 +26,7 @@
 		</nav>
 <!--   main area     -->
 		<div class="main">
-			<nav class="navbar navbar-expand navbar-light navbar-bg">
+			<nav class="navbar navbar-expand navbar-dark navbar-bg">
 				<a class="sidebar-toggle d-flex">
                   <i class="align-self-center" data-feather="menu"></i>
                 </a>
@@ -39,7 +40,7 @@
                             </a>
 
                             <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
-                                <span class="text-dark">{{ user.profile.get_screen_name }}</span>
+                                <span class="text-dark">{{ user.profile.get_screen_name }}<i data-feather="chevron-down"></i></span>
                             </a>
                             <a href="{% url 'profile' user.username %}">
                                 <img src="{{ user.profile.get_picture }}" class="avatar img-fluid rounded-circle mr-5" alt="{{user.first_name}} {{ user.last_name }}" />

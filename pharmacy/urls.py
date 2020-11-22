@@ -27,7 +27,6 @@ from search import views as search_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', core_views.home, name='home'),
-    url(r'^home/$', core_views.home_main, name='home_main'),
     # auth urls
     url(r'^login/', auth_views.LoginView.as_view(template_name='core/cover.html'), name='login'),
     url(r'^logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
@@ -36,12 +35,12 @@ urlpatterns = [
 
     # account urls
     url(r'^settings/$', core_views.settings, name='settings'),
-    url(r'^settings/picture/$', core_views.picture, name='picture'),
-    # path('setting/picture/', core_views.picture, name='picture'),
-    url(r'^settings/picture/$', core_views.picture, name='picture'),
-    # path('settings/upload_picture', core_views.upload_picture, name='upload_picture'),
-    url(r'^settings/upload_picture/$', core_views.upload_picture,
-        name='upload_picture'),
+    path('settings', core_views.settings, name='settings'),
+    # url(r'^settings/picture/$', core_views.picture, name='picture'),
+    path('settings/picture/', core_views.picture, name='picture'),
+    path('settings/upload_picture', core_views.upload_picture, name='upload_picture'),
+    # url(r'^settings/upload_picture/$', core_views.upload_picture,
+    #     name='upload_picture'),
     path('settings/save_uploaded_picture/', core_views.save_uploaded_picture, name='save_uploaded_picture'),
     path('settings/password/', core_views.password, name='password'),
     # admin url
