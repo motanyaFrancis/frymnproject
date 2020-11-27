@@ -30,7 +30,12 @@
 				<a class="sidebar-toggle d-flex">
                   <i class="align-self-center" data-feather="menu"></i>
                 </a>
-                <h1 class="col-md-6 align-self-center align-middle" style="font-family: 'Calibri Light'; color: #7b7031">{{ user.profile.name }}</h1>
+                <h1 class="col-md-6 align-self-center align-middle" style="font-family: 'Calibri Light'; color: #7b7031">
+                    {{ user.profile.name }}
+                    <sup class="text-decoration-underline">
+                        <ins><cite>{{ user.profile.type }}</cite></ins>
+                    </sup>
+                </h1>
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
 
@@ -65,13 +70,11 @@
 				<div class="container-fluid p-0">
 					<div class="row">
 						<div class="col-12">
-							<div class="card">
-								<div class="card-header">
+							<div class="">
+								<div class="card-body">
                                     {% block main %}
 
                                     {% endblock %}
-								</div>
-								<div class="card-body">
 								</div>
 							</div>
 						</div>

@@ -7,21 +7,18 @@
 {% endblock %}
 
 {% block main %}
-  <div class="page-header">
-    <h1>Company Panel</h1>
-  </div>
-  <div class="row" style="margin-top: 2em">
+  <div class="row card">
 
     <div class="col-md-12">
       {% if messages %}
         {% for message in messages %}
-          <div class="alert alert-success alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            {{ message }}
+          <div class="alert alert-success alert-dismissible">
+            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+            <div class="alert-message">{{ message }}</div>
           </div>
         {% endfor %}
       {% endif %}
-      <h3 style="margin-top: 0">Edit Stock</h3>
+      <h3>Edit Stock</h3>
       <form role="form" class="form-horizontal" method="post" action="{% url 'edit_stock_company' pk %}">
         {% csrf_token %}
         {% for field in form.visible_fields %}

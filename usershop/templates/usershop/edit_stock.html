@@ -5,21 +5,22 @@
     {% include 'usershop/partial_shop_menu.html' with active='stock' %}
 {% endblock %}
 {% block main %}
-  <div class="page-header">
-    <h1>Shop Panel</h1>
-  </div>
-  <div class="row" style="margin-top: 2em">
+  <div class="row" >
 
-    <div class="col-md-9">
+    <div class="col-md-9 card">
+    <div class="card-header">
       {% if messages %}
         {% for message in messages %}
           <div class="alert alert-success alert-dismissible">
-            <button type="button" class="btn-close" data-dismiss="alert" aria-label="close">&times;</button>
-              <div class="alert-message">{{ message }}</div>
+            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">&times;</button>
+            <div class="alert-message">{{ message }}</div>
           </div>
         {% endfor %}
       {% endif %}
-      <h3 style="margin-top: 0">Edit Stock</h3>
+
+        <h3>Edit Stock</h3>
+    </div>
+
     <div class="card-body">
       <form role="form" class="form-horizontal" method="post" action="{% url 'edit_stock_shop' pk %}">
         {% csrf_token %}

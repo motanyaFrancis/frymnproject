@@ -6,17 +6,7 @@
 
 {% block head %}
 <link href="{% static 'css/useradmin.css' %}" rel="stylesheet">
-<style>
-.shop {
-margin-left: 40px;
-padding-left: 1em;
-border-top: 1px solid #eeeeee;
-}
-.shop a{
-text-decoration: none;
-background-color: transparent;
-}
-</style>
+
 {% endblock head %}
 {% block side %}
     {% include 'useradmin/partial_admin_menu.html' with active='company' %}
@@ -24,18 +14,17 @@ background-color: transparent;
 {% endblock %}
 {% block main %}
 
-<div class="row" style="margin-top: 2em">
-
-    <div class="col-md-9">
-        <h3 style="margin-top: 0">Company list</h3>
-        <section class="profiles">
+<div class="row">
+    <div class="col-md-9 card">
+        <div class="card-body">
+            <h3>Company list</h3>
+        </div>
+        <div class="card-body">
             {% for company in companies %}
                 <hr class="my-3">
                 <div class="col-md-6">
                 <strong>
                     <div class="" ><a href="{% url 'profile' company.user.username %}">{{company.name}}</a></div>
-
-
                 </strong>
                     <p>
                         {{company.address.line1}} {{company.address.line2}} <br>
@@ -46,12 +35,12 @@ background-color: transparent;
                     </p>
                 </div>
             {% endfor %}
-        </section>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 {% include 'paginator.html' with paginator=companies %}
             </div>
         </div>
     </div>
-    </div>
-    {% endblock main %}
+</div>
+{% endblock main %}

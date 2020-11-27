@@ -6,18 +6,21 @@
     </li>
 {% endblock %}
 {% block main %}
-  <div class="row" style="margin-top: 2em">
+  <div class="row">
 
-    <div class="col-md-9">
+    <div class="col-md-9 card">
       {% if messages %}
         {% for message in messages %}
-          <div class="alert alert-success alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            {{ message }}
+          <div class="alert alert-success alert-dismissible">
+            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+            <div class="alert-message">{{ message }}</div>
           </div>
         {% endfor %}
       {% endif %}
-      <h3 style="margin-top: 0">Add Medicine</h3>
+    <div class="card-header">
+        <h3>Add Medicine</h3>
+    </div>
+
     <div class="card-body">
       <form role="form" class="form-horizontal" method="post" action="{% url 'add_medicine' %}">
         {% csrf_token %}

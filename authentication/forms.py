@@ -104,12 +104,12 @@ class SignUpFormDetailed(forms.ModelForm):
 
 
 class AddressForm(forms.ModelForm):
-    line1 = forms.CharField(
+    address = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         max_length=30,
         required=True,
     )
-    line2 = forms.CharField(
+    city_code = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         max_length=30,
         required=True,
@@ -129,11 +129,11 @@ class AddressForm(forms.ModelForm):
         max_length=30,
         required=True,
     )
-    pincode = forms.IntegerField(
+    pin_code = forms.IntegerField(
         widget=forms.NumberInput(attrs={'class': 'form-control'}),
         max_value=700000,
     )
-    contactno = forms.IntegerField(
+    contact_No = forms.IntegerField(
         widget=forms.NumberInput(attrs={'class': 'form-control'}),
         max_value=100000000000,
 
@@ -145,4 +145,4 @@ class AddressForm(forms.ModelForm):
 
     class Meta:
         model = Address
-        fields = ['line1', 'line2', 'city', 'state', 'country', 'pincode', 'contactno', 'email']
+        fields = ['address', 'city_code', 'city', 'state', 'country', 'pin_code', 'contact_No', 'email']

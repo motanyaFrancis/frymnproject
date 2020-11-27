@@ -1,9 +1,9 @@
 {% include 'head.html' %}
 {% load static %}
-<main class="d-flex w-100 " >
+<main class="d-flex w-100 login" >
     <div class="container d-flex flex-column">
         <div class="row vh-100">
-            <div class="col-sm-10 col-md-8 col-lg-4 mx-auto d-table h-100">
+            <div class="col-sm-10 col-md-8 col-lg-5 mx-auto d-table h-100">
                 <div class="d-table-cell align-middle">
                     <div class="card" >
                         <div class="card-body">
@@ -30,11 +30,11 @@
                                         <label class="form-label">Password</label>
                                         <input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password" required/>
                                         <div class="mb-3">
-                                            <span class="my-3 b">New to this site?  <a href="{% url 'signup' %}">Create account</a></span>
+                                            <span class="my-3 b">New to Frymn?  <a href="{% url 'signup' %}">Create account</a></span>
                                         </div>
                                     </div>
                                     <div class="text-center mt-3">
-                                        <button type="submit" class="btn btn-lg btn-primary">Sign in</button>
+                                        <button type="submit" class="btn btn-lg btn-primary">Log in</button>
                                     </div>
                                 </form>
                             </div>

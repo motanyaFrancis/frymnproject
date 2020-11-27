@@ -11,14 +11,14 @@
     {% include 'usershop/partial_shop_menu.html' with active='trans' %}
 {% endblock %}
 {% block main %}
-<div class="row" style="margin-top: 2em">
+<div class="row">
 
-    <div class="col-md-12">
+    <div class="col-md-12 card">
         <div class="row">
-            <div class="col-md-5">
-                <h3 style="margin-top: 0">Transactions</h3>
+            <div class="col-md-5 card-header">
+                <h3>Transactions</h3>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-7 card-header">
                 <form role="search" action="{% url 'view_transactions_shop' %}">
                     <div class="input-group input-group-navbar">
 						<input type="text" class="form-control" name="q" placeholder="Search…" aria-label="Search" value="{{ querystring }}">

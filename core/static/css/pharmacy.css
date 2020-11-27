@@ -1,0 +1,9 @@
+body .main{
+    background: url("../images/background2.jpg") no-repeat;
+    background-size: cover;
+}
+ .login, .signup, .signupdetails{
+     background: url("../images/slider-image2.jpg")center center no-repeat fixed;
+     background-size: cover;
+ }
+

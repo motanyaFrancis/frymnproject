@@ -25,22 +25,21 @@ from django.conf.urls.static import static
 from search import views as search_views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^$', core_views.home, name='home'),
+
+    path('admin/', admin.site.urls),
+    path('', core_views.home, name='home'),
+
     # auth urls
-    url(r'^login/', auth_views.LoginView.as_view(template_name='core/cover.html'), name='login'),
-    url(r'^logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
-    url(r'^signup/$', peekstudy_auth_views.signup, name='signup'),
-    url(r'^signupdetailed/$', peekstudy_auth_views.signupdetailed, name='signupdetailed'),
+
+    path('login/', auth_views.LoginView.as_view(template_name='core/cover.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
+    path('signup/', peekstudy_auth_views.signup, name='signup'),
+    path('signupdetailed/', peekstudy_auth_views.signupdetailed, name='signupdetailed'),
 
     # account urls
-    url(r'^settings/$', core_views.settings, name='settings'),
-    path('settings', core_views.settings, name='settings'),
-    # url(r'^settings/picture/$', core_views.picture, name='picture'),
+    path('settings/', core_views.settings, name='settings'),
     path('settings/picture/', core_views.picture, name='picture'),
     path('settings/upload_picture', core_views.upload_picture, name='upload_picture'),
-    # url(r'^settings/upload_picture/$', core_views.upload_picture,
-    #     name='upload_picture'),
     path('settings/save_uploaded_picture/', core_views.save_uploaded_picture, name='save_uploaded_picture'),
     path('settings/password/', core_views.password, name='password'),
     # admin url
@@ -51,11 +50,8 @@ urlpatterns = [
 
     # shop url
     path('usershop/', include('usershop.urls')),
-
     path('activities/', include('activities.urls')),
-
     path('search/', search_views.search, name='search'),
-
     path('user/<slug:username>', core_views.profile, name='profile')
 
 

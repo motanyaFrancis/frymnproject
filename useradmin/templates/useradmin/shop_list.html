@@ -10,23 +10,17 @@
 {% block head %}
 <link href="{% static 'css/useradmin.css' %}" rel="stylesheet">
 <style>
-.shop {
-margin-left: 40px;
-padding-left: 1em;
-border-top: 1px solid #eeeeee;
-}
-.shop a{
-text-decoration: none;
-background-color: transparent;
-}
+
 </style>
 
 {% endblock head %}
 {% block main %}
 <div class="row" >
 
-    <div class="col-md-9">
-        <h3>Shop list</h3>
+    <div class="col-md-9 card">
+        <div class="card-header">
+            <h3>Shop list</h3>
+        </div>
         <section class="profiles">
             {% for shop in shops %}
                 <hr class="my-3">
