@@ -9,6 +9,7 @@ urlpatterns = [
     path('stock/view/', views.view_stocks, name='view_stock_company'),
     path('order/views/', views.view_orders, name='view_order_company'),
     path('transactions/view', views.view_transactions, name='view_transactions_company'),
+    path('view/available_stock', views.view_avail_stocks, name='view_avail_stock_company'),
 
     url(r'^order/(?P<pk>\d+)/accept', views.accept_order, name='accept_order_company'),
     url(r'^order/(?P<pk>\d+)/decline$', views.decline_order, name='decline_order_company'),
