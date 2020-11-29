@@ -1,5 +1,4 @@
 environ
-Django
 Pillow
 django-cleanup
 bleach
