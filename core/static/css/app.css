@@ -2992,7 +2992,7 @@ fieldset:disabled .btn {
 }
 .btn-check:focus + .btn-outline-primary,
 .btn-outline-primary:focus {
-    box-shadow: 0 0 0 0.2rem rgba(59, 125, 221, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(123, 112, 49, 0.5);
 }
 .btn-check:active + .btn-outline-primary,
 .btn-check:checked + .btn-outline-primary,
@@ -12250,7 +12250,7 @@ a {
     background: #717e8c;
 }
 .bg-primary-dark {
-    background: #0f2c56;
+    background: #50471d;
 }
 .bg-secondary-dark {
     background: #191b1d;
@@ -12262,7 +12262,7 @@ a {
     background: #031619;
 }
 .bg-warning-dark {
-    background: #543f00;
+    background:  #ffc107;
 }
 .bg-danger-dark {
     background: #510e14;

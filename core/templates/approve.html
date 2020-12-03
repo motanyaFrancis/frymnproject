@@ -1,33 +1,31 @@
 {% include 'head.html' %}
 {% load static %}
 
- <main class="d-flex w-100">
+ <main class="d-flex w-100 approve">
     <div class="container d-flex flex-column">
         <div class="row vh-100">
             <div class="col-sm-10 col-md-8 col-lg-5 mx-auto d-table h-100">
                 <div class="d-table-cell align-middle">
                     <div class="text-center">
                         <img src="{% static 'logo.png' %}" alt="logo" class="img-fluid" width="250" height="132" />
-                        <hr class="my-3 mb-4" />
                     </div>
                     <div class="text-center mt-4">
-
-                        <h1 class="h2">Welcome to Frymn </h1>
                          <div class="mb-3">
                             <div class="alert card alert-outline alert-dismissible" role="alert">
                                 <div class="alert-message">
+                                    <h1 class="h2">Welcome to Frymn Meds</h1>
                                     <p>you registration was successful, we look forward to serving you in the best possible manner.
                                         The administration will look into your registration being approved.
                                         Approval may take upto 24hrs</p>
                                     <hr>
+                                    <p class="mb-3">
+                                        Continue to <a href="{% url 'login' %} " class="link-secondary">login</a>
+                                    </p>
                                     <h4 class="alert-heading">Thank you</h4>
                                 </div>
 
                             </div>
                          </div>
-                        <p class="mb-3">
-                            Continue to <a href="{% url 'login' %}">login</a>
-                        </p>
 
                     </div>
                 </div>

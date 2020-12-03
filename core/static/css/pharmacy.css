@@ -1,8 +1,8 @@
 body .main{
-    background: url("../images/background2.jpg") no-repeat;
+    background: url("../Frymn-logo-long.png") no-repeat ;
     background-size: cover;
 }
- .login, .signup, .signupdetails{
+ .login, .signup, .signupdetails, .approve{
      background: url("../images/slider-image2.jpg")center center no-repeat fixed;
      background-size: cover;
  }

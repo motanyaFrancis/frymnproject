@@ -1,8 +1,8 @@
-$(window).load(function () {
+$(function () {
 
     $('#medicineSelect').on('change', function() {
-        let medicineValue = this.value;
-
+      medicineValue = this.value;
+    
        $.ajax({
             url: '/activities/orders/get_company_list',
             data: {
@@ -13,7 +13,7 @@ $(window).load(function () {
                 $('#collegeSelect').html(data);
             }
           });
-
+    
     });
-
-});
+    
+    });
