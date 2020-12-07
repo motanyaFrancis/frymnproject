@@ -90,6 +90,43 @@
                                       window.history.pushState("", "", "/settings/");
                                     });
                                   </script>
+                                    <script>
+                                      $(function () {
+
+                                        let jcrop_api,
+                                              boundx,
+                                              boundy,
+                                              xsize = 200,
+                                              ysize = 200;
+
+                                        $("#crop-picture").Jcrop({
+                                              aspectRatio: xsize / ysize,
+                                              onSelect: updateCoords,
+                                              setSelect: [0, 0, 200, 200]
+                                            },function(){
+                                              let bounds = this.getBounds();
+                                              boundx = bounds[0];
+                                              boundy = bounds[1];
+                                              jcrop_api = this;
+                                          });
+
+                                          function updateCoords(c) {
+                                            $("#x").val(c.x);
+                                            $("#y").val(c.y);
+                                            $("#w").val(c.w);
+                                            $("#h").val(c.h);
+                                        };
+
+                                        $("#btn-upload-picture").click(function () {
+                                          $("#picture-upload-form input[name='picture']").click();
+                                        });
+
+                                        $("#picture-upload-form input[name='picture']").change(function () {
+                                          $("#picture-upload-form").submit();
+                                        });
+
+                                      });
+                                    </script>
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -119,27 +156,6 @@
       </div>
     </div>
 </div>
-<script>
-  $(window).load(function(){
 
-    $("#approvebtn").click(function(){
-    let username = $(this).attr("username");
-    let csrf = $(this).attr("csrf");
-    $.ajax({
-      url: '/useradmin/approve/',
-      data: {
-        username: username,
-        csrfmiddlewaretoken: csrf
-      },
-      type: 'post',
-      cache: false,
-      success: function (data) {
-        $("#approve").html(data);
-      }
-    });
-
-    });
-  });
-</script>
-{% include 'script.html' %}
+<!-- {% include 'script.html' %} -->
 {% endblock main %}

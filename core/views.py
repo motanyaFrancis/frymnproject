@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.models import User
-from requests import auth
+# from requests import auth
 
 from core.forms import ChangePasswordForm, ProfileForm
 from django.conf import settings as django_settings

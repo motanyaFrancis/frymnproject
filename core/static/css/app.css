@@ -2669,7 +2669,7 @@ progress {
 .btn-check:focus + .btn,
 .btn:focus {
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(59, 125, 221, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(123, 112, 49, 0.25);
 }
 .btn.disabled,
 .btn:disabled,
@@ -2691,7 +2691,7 @@ fieldset:disabled .btn {
 }
 .btn-check:focus + .btn-primary,
 .btn-primary:focus {
-    box-shadow: 0 0 0 0.2rem rgba(50, 106, 188, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(123, 112, 49, 0.5);
 }
 .btn-check:active + .btn-primary,
 .btn-check:checked + .btn-primary,
@@ -4491,8 +4491,8 @@ fieldset:disabled .btn {
 .list-group-item.active {
     z-index: 2;
     color: #fff;
-    background-color: #3b7ddd;
-    border-color: #3b7ddd;
+    background-color: #7b7031;
+    border-color: #7b7031;
 }
 .list-group-item + .list-group-item {
     border-top-width: 0;
@@ -4709,7 +4709,7 @@ fieldset:disabled .btn {
     border-color: #0c5460;
 }
 .list-group-item-warning {
-    color: #856404;
+    color: #ffeeba;
     background-color: #ffeeba;
 }
 .list-group-item-warning.list-group-item-action:focus,
@@ -4719,8 +4719,8 @@ fieldset:disabled .btn {
 }
 .list-group-item-warning.list-group-item-action.active {
     color: #fff;
-    background-color: #856404;
-    border-color: #856404;
+    background-color: #ffeeba;
+    border-color: #ffeeba;
 }
 .list-group-item-danger {
     color: #721c24;
@@ -11968,8 +11968,8 @@ a.sidebar-link svg {
 .sidebar-item.active .sidebar-link:hover,
 .sidebar-item.active > .sidebar-link {
     color: #e9ecef;
-    background: linear-gradient(90deg, rgba(59, 125, 221, 0.1), rgba(59, 125, 221, 0.0875) 50%, transparent);
-    border-left-color: #3b7ddd;
+    background: linear-gradient(90deg, rgba(123, 112, 49, 0.1), rgba(123, 112, 49, 0.0875) 50%, transparent);
+    border-left-color: #7b7031;
 }
 .sidebar-item.active .sidebar-link:hover i,
 .sidebar-item.active .sidebar-link:hover svg,
@@ -12005,7 +12005,7 @@ a.sidebar-link svg {
 .sidebar-dropdown .sidebar-item.active .sidebar-link {
     font-weight: 400;
     border-left: 0;
-    color: #518be1;
+    color: #9a8e44;
     background: transparent;
 }
 .sidebar [data-toggle="collapse"] {
