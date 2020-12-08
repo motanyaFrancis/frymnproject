@@ -27,7 +27,7 @@ Production Settings for Heroku
 
 env = environ.Env(
     # set casting, default value
-    DEBUG=(bool, True)
+    DEBUG=(bool, False)
 )
 
 # False if not in os.environ
