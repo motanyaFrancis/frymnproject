@@ -54,8 +54,6 @@ urlpatterns = [
     path('search/', search_views.search, name='search'),
     path('user/<slug:username>', core_views.profile, name='profile')
 
-
-
 ]
 
 if settings.DEBUG:
