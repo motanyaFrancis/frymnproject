@@ -11,7 +11,7 @@ SECRET_KEY = '=2$d(cak*of$$qs#9z0!r2843$s9_j^vlbc2#&lb#zef2+0mvu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'frymn-app.herokuapp.com']
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
