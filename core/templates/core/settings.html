@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block title %}Account Settings{% endblock %}
+{% load static %}
+
 {% block side %}
     {% if user.is_staff %}
             {% include 'useradmin/partial_admin_menu.html' with active='settings' %}

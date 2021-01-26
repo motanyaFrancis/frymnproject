@@ -41,6 +41,8 @@ def profile(request, username):
         'page_user': page_user,
     })
 
+def help(request):
+    return render(request, 'core/contact.html')
 
 @login_required
 def settings(request):

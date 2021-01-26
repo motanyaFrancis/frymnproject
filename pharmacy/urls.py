@@ -28,6 +28,7 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('', core_views.home, name='home'),
+    path('help', core_views.help, name='help'),
 
     # auth urls
 
