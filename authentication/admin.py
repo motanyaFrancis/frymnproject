@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.models import Group
 from authentication.models import Profile, Address
 
 
@@ -8,6 +9,13 @@ class ProfileAdmin(admin.ModelAdmin):
     list_filter = ('type', 'approved')
 
 
-admin.site.register(Profile, ProfileAdmin)
-admin.site.register(Address)
+class AdressAdmin(admin.ModelAdmin):
+    list_display = ('line1', 'line2', 'city', 'country', 'contactno', 'email')
 
+
+admin.site.register(Profile, ProfileAdmin)
+admin.site.register(Address, AdressAdmin)
+admin.site.site_header = 'Frymn Pharmacy Dashboard'
+admin.site.site_title = 'Frymn Dashboard'
+admin.site.index_title = 'Frymn Dashboard'
+admin.site.unregister(Group)

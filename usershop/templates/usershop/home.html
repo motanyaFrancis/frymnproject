@@ -11,10 +11,108 @@
 {% endblock head %}
 
 {% block main %}
-<div class="row" style="margin-top: 2em">
-
-    <div class="col-md-9">
-
+    <div class="card">
+        <div class="card-body">  
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <div class="card bg-light py-2 py-md-3 border">
+                        <div class="card-body">
+                            <a class="card-link" href="{% url 'shop_home'%}">
+                                <i class="align-middle" data-feather="home"></i> <br>
+                                <span class="align-middle">Home</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="card bg-light py-2 py-md-3 border">
+                        <div class="card-body">
+                            <a class="card-link" href="{% url 'add_stock_shop'%}">
+                                <i class="align-middle" data-feather="shopping-bag"></i> <br>
+                                <span class="align-middle">Add stock</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="card bg-light py-2 py-md-3 border">
+                        <div class="card-body">
+                            <a class="card-link" href="{% url 'view_stock_shop'%}">
+                                <i class="align-middle" data-feather="list"></i> <br>
+                                <span class="align-middle">View stock</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="card bg-light py-2 py-md-3 border">
+                        <div class="card-body">
+                            <a class="card-link" href="{% url 'view_avail_stock_shop'%}">
+                                <i class="align-middle" data-feather="clipboard"></i> <br>
+                                <span class="align-middle">Check stock Availability</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="card bg-light py-2 py-md-3 border">
+                        <div class="card-body">
+                            <a class="card-link" href="{% url 'create_order'%}">
+                                <i class="align-middle" data-feather="shopping-cart"></i> <br>
+                                <span class="align-middle">Place orders</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="card bg-light py-2 py-md-3 border">
+                        <div class="card-body">
+                            <a class="card-link" href="{% url 'view_order_shop' %}">
+                                <i class="align-middle" data-feather="list"></i> <br>
+                                <span class="align-middle">Orders</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="card bg-light py-2 py-md-3 border">
+                        <div class="card-body">
+                           <a class="card-link" href="{% url 'view_transactions_shop'%}">
+                                <i class="align-middle" data-feather="check-circle"></i> <br>
+                                <span class="align-middle">Transactions</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="card bg-light py-2 py-md-3 border">
+                        <div class="card-body">
+                            <a class="card-link" href="{% url 'view_note_shop'%}">
+                                <i class="align-middle" data-feather="bell"></i> <br>
+                                <span class="align-middle">Notification</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="card bg-light py-2 py-md-3 border">
+                        <div class="card-body">
+                            <a class="card-link" href="{% url 'settings'%}">
+                                <i class="align-middle" data-feather="settings"></i> <br>
+                                <span class="align-middle">Settings</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <div class="card bg-light py-2 py-md-3 border">
+                        <div class="card-body">
+                            <p>welcome to our pharmacy dashboard</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
-    {% endblock main %}
+
+{% endblock main %}

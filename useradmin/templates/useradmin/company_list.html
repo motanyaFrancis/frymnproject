@@ -21,10 +21,10 @@
         </div>
         <div class="card-body">
             {% for company in companies %}
-                <hr class="my-3">
+                <hr class="my-1">
                 <div class="col-md-6">
                 <strong>
-                    <div class="" ><a href="{% url 'profile' company.user.username %}">{{company.name}}</a></div>
+                    <div ><a href="{% url 'profile' company.user.username %}">{{company.name}}</a></div>
                 </strong>
                     <p>
                         {{company.address.line1}} {{company.address.line2}} <br>

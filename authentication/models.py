@@ -151,6 +151,7 @@ class Address(models.Model):
 
     class Meta:
         db_table = 'address'
+        verbose_name_plural = 'Addresses'
 
     def __str__(self):
         return self.line1

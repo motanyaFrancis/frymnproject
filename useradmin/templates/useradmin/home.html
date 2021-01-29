@@ -11,31 +11,88 @@
 {% endblock %}
 {% block main %}
 
-
-<div class="row">
-   
-{#    <div class="col-md-9">#}
-{#        <h3 style="margin-top: 0">Approve New Accounts</h3>#}
-{#        <section class="profiles">#}
-{#            {% for profile in unapproved_profiles %}#}
-{#            <div class="profile">#}
-{#                <h3>#}
-{#                    <address>#}
-{#                        <strong><a href="{% url 'profile' shop.user.username%}">{{profile.name}}</a></strong><br>#}
-{#                        {{profile.address.line1}}, {{profile.address.line2}}#}
-{#                        {{profile.address.city}}, {{profile.address.state}}#}
-{#                        {{profile.address.country}}, {{profile.address.pincode}}<br>#}
-{#                        <abbr title="Phone">P:</abbr> {{profile.address.contactno}}#}
-{#                    </address>#}
-{#                </h3>#}
-{#            </div>#}
-{#            {% endfor %}#}
-{#        </section>#}
-{#        <div class="row">#}
-{#            <div class="col-md-12">#}
-{#                {% include 'paginator.html' with paginator=unapproved_profiles %}#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
+<div class="card">
+    <div class="card-body">  
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <div class="card bg-light py-2 py-md-3 border">
+                    <div class="card-body">
+                        <a class="card-link" href="{% url 'admin_home'%}">
+                            <i class="align-middle" data-feather="home"></i> <br>
+                            <span class="align-middle">Home</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="card bg-light py-2 py-md-3 border">
+                    <div class="card-body">
+                        <a class="card-link" href="{% url 'add_medicine'%}">
+                            <i class="align-middle" data-feather="shopping-bag"></i> <br>
+                            <span class="align-middle">Add Medicine</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="card bg-light py-2 py-md-3 border">
+                    <div class="card-body">
+                        <a class="card-link" href="{% url 'view_medicines'%}">
+                            <i class="align-middle" data-feather="clipboard"></i> <br>
+                            <span class="align-middle">View Medicine</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="card bg-light py-2 py-md-3 border">
+                    <div class="card-body">
+                        <a class="card-link" href="{% url 'admin_shop_list'%}">
+                            <i class="align-middle" data-feather="list"></i> <br>
+                            <span class="align-middle">Pharmacy List</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="card bg-light py-2 py-md-3 border">
+                    <div class="card-body">
+                        <a class="card-link" href="{% url 'admin_company_list'%}">
+                            <i class="align-middle" data-feather="list"></i> <br>
+                            <span class="align-middle">Distributors List</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="card bg-light py-2 py-md-3 border">
+                    <div class="card-body">
+                        <a class="card-link" href="/admin">
+                            <i class="align-middle" data-feather="cpu"></i> <br>
+                            <span class="align-middle">Admin configuration</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="card bg-light py-2 py-md-3 border">
+                    <div class="card-body">
+                        <a class="card-link" href="{% url 'settings'%}">
+                            <i class="align-middle" data-feather="settings"></i> <br>
+                            <span class="align-middle">Settings</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 text-center">
+                <div class="card bg-light py-2 py-md-3 border">
+                    <div class="card-body">
+                        <h1>Admin</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    {% endblock main %}
+</div>
+
+{% endblock main %}

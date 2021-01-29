@@ -28,10 +28,10 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('', core_views.home, name='home'),
-    path('help', core_views.help, name='help'),
+    path('help/', core_views.help, name='help'),
+    path('about/', core_views.about, name='about'),
 
     # auth urls
-
     path('login/', auth_views.LoginView.as_view(template_name='core/cover.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
     path('signup/', peekstudy_auth_views.signup, name='signup'),
@@ -43,6 +43,7 @@ urlpatterns = [
     path('settings/upload_picture', core_views.upload_picture, name='upload_picture'),
     path('settings/save_uploaded_picture/', core_views.save_uploaded_picture, name='save_uploaded_picture'),
     path('settings/password/', core_views.password, name='password'),
+
     # admin url
     path('useradmin/', include('useradmin.urls')),
 

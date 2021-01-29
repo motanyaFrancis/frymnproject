@@ -1,7 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
-{% include 'head.html' %}
+<head>
+{% load static %}
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>{% block title %}Pharmacy{% endblock %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+	<link type="text/css" rel="stylesheet" href="{% static 'css/pharmacy.css' %}">
+	<!-- <link rel="shortcut icon" href="{% static 'img/icons/icon.png' %}" /> -->
+	<link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+	{% block head %}{% endblock %}
+	<link type="text/css" href="{% static 'css/app.css' %}" rel="stylesheet">
+</head>
 <body>
 {% block body %}
 
@@ -13,9 +27,9 @@
 			<div class="sidebar-content js-simplebar">
 				<a class="sidebar-brand" href="/">
                   <span class="align-items-md-center">
-                      <img src="{% static 'logo.png' %}" class="img-fluid align-items-md-center" alt="frymn-logo" />
+                      <img src="{% static 'frymn-logos_white.png' %}" class="img-fluid align-items-md-center" alt="frymn-logo" />
                   </span>
-                    <hr style="color:#7b7031; height: 3px" />
+                    <hr style="color:#ffffff; height: 1px" />
                 </a>
 
                 <ul class="sidebar-nav">
@@ -100,6 +114,9 @@
 								</li>
 								<li class="list-inline-item">
 									<a class="text-muted" href="#">Terms</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="{% url 'about' %}">About</a>
 								</li>
 							</ul>
 						</div>

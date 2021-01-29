@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Shop Panel{% endblock %}
+{% block title %}Place order{% endblock %}
 {% block side %}
     {% include 'usershop/partial_shop_menu.html' with active='order' %}
 {% endblock %}
@@ -57,7 +57,6 @@
 </div>
 <script>
     $(function () {
-
         $('#medicineSelect').on('change', function() {
         medicineValue = this.value;
 
@@ -76,5 +75,5 @@
 
     });
 </script>
-    <script src="{% static 'js/order.js' %}"></script>
+    <!-- <script src="{% static 'js/order.js' %}"></script> -->
 {% endblock main %}

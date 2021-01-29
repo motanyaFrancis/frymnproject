@@ -29,7 +29,7 @@
                     <div class="" ><a href="{% url 'profile' shop.user.username %}">{{shop.name}}</a></div>
                 </strong>
                     <p>
-                        {{shop.address.line1}} {{shop.address.line2}} <br>
+                        P.O Box {{shop.address.line1}}-{{shop.address.line2}}, <br>
                         {{shop.address.city}}, {{shop.address.state}} <br>
                         {{shop.address.country}} <br>
                         <abbr title="pincode">pincode:</abbr> {{shop.address.pincode}}<br>
