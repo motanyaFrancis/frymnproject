@@ -1,6 +1,5 @@
 from .base import *
-from .base import BASE_DIR
-import os
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -11,7 +10,7 @@ SECRET_KEY = '=2$d(cak*of$$qs#9z0!r2843$s9_j^vlbc2#&lb#zef2+0mvu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'frymn-app.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
