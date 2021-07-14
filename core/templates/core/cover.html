@@ -13,10 +13,15 @@
                                     <hr class="my-3 mb-4" />
                                     {% if messages %}
                                         {% for message in messages %}
-                                          <div class="alert alert-success alert-dismissible" role="alert">
-                                              <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
-                                              <div class="alert-message">{{ message }}</div>
-                                          </div>
+                                        <div class="alert alert-danger alert-dismissible" role="alert">
+                                            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                                            <div class="alert-icon">
+                                                <i class="fa fa-bell" feather></i>
+                                            </div>
+                                            <div class="alert-message alert-{{message.tags}}">
+                                                {{ message }}
+                                            </div>
+                                        </div>
                                         {% endfor %}
                                     {% endif %}
                                 </div>
@@ -30,7 +35,7 @@
                                         <label class="form-label">Password</label>
                                         <input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password" required/>
                                         <div class="mb-3">
-                                            <span class="my-3 b">New to Frymn?  <a href="{% url 'signup' %}">Create account</a></span>
+                                            <span class="my-3 b"> <a href="{% url 'signup' %}">Register now</a></span>
                                         </div>
                                     </div>
                                     <div class="text-center mt-3">
