@@ -31,6 +31,11 @@ def home(request):
             return shop_home(request)
         if request.user.profile.type == 'C':
             return company_home(request)
+        elif user is not None:
+            messages.info(request, f'you are logged in as {username}')
+        else:
+            messages.error(request, 'please enter the coorect username and password. Note that both fields are case sensitive.')
+
     else:
         return render(request, 'core/cover.html')
 

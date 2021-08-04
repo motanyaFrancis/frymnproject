@@ -155,3 +155,9 @@ def view_note(request):
     except EmptyPage:
         trans = paginator.page(paginator.num_pages)
     return render(request, 'usershop/view_note.html', {'trans': trans, 'querystring': querystring})
+
+
+@login_required
+def check_out(request):
+    return render(request, 'usershop/checkout.html')
+        

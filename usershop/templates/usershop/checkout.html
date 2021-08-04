@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %} Shop Panel {% endblock %}
+{% block side %}
+    {% include 'usershop/partial_shop_menu.html' with active='checkout' %}
+{% endblock %}
+{% block head %}
+<link href="{% static 'css/usershop.css' %}" rel="stylesheet">
+{% endblock head %}
+
+{% block main %}
+    <div class="card">
+        <div class="card-body">  
+            <div class="row">
+                <div class="col-md-5 card-header">
+                    <h3>Billing</h3>
+                </div>
+                <div class="col-md-7 card-header">
+                    <form role="search" action="{% url 'check_out' %}">
+                        <div class="input-group input-group-navbar">
+                            <input type="text" class="form-control" name="q" placeholder="Search…" aria-label="Search" value="{{ querystring }}">
+                            <button class="btn" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search align-middle"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <section class="stocks col-md-7">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Medicine</th>
+                            <th>Price</th>
+                            <th>Qty</th>
+                            <th>Total</th>
+                            
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for stock in stocks %}
+
+                        <tr>
+                            <th scope="row">{{stock.pk}}</th>
+                            <td>{{stock.medicine.name}}</td>
+                            <td>{{stock.price}}</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    </table>
+                </section>
+                <section class="stocks col-md-5">
+                    <table class="table table-striped">
+                        <div>
+                            <br><br><br>
+                        </div>
+                        <thead>
+                        <tr>
+                            <th>Subtotal</th>
+                            <td>KES-</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th>Discount</th>
+                            <td>KES-</td>
+                        </tr>
+                        <tr>
+                            <th>Tax(16%)</th>
+                            <td>KES-</td>
+                        </tr>
+                        <tr>
+                            <th>Totals</th>
+                            <td>KES-</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                    <button class="btn btn-primary">Submit</button>
+                </section>
+
+            </div>            
+
+        </div>
+   </div>
+
+{% endblock main %}

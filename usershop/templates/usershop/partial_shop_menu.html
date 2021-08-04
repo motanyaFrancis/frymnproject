@@ -4,6 +4,12 @@
     </a>
 </li>
 
+<li class="sidebar-item{% if active == 'checkout' %} active{% endif %}">
+    <a class="sidebar-link list-group-item" href="{% url 'check_out'%}">
+        <i class="align-middle" data-feather='shopping-cart'></i> <span class="align-middle">Billing</span>
+    </a>
+</li>
+
 <li class="sidebar-item{% if active == 'stock' %} active{% endif %}">
     <a class="sidebar-link list-group-item" href="{% url 'add_stock_shop'%}">
         <i class="align-middle" data-feather='shopping-bag'></i> <span class="align-middle">Add Stock</span>
@@ -22,11 +28,11 @@
     </a>
 </li>
 
-<li class="sidebar-item{% if active == 'order' %} active{% endif %}">
+<!-- <li class="sidebar-item{% if active == 'order' %} active{% endif %}">
     <a class="sidebar-link list-group-item" href="{% url 'create_order'%}">
         <i class="align-middle" data-feather="shopping-cart"></i> <span class="align-middle">Place Order</span>
     </a>
-</li>
+</li> -->
 
 <li class="sidebar-item{% if active == 'order-view' %} active{% endif %}">
     <a class="sidebar-link list-group-item" href="{% url 'view_order_shop'%}">

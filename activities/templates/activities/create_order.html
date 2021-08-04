@@ -6,7 +6,7 @@
 {% endblock %}
 {% block main %}
 {% load static %}
-<script src="{% static 'js/order.js' %}"></script>
+<!-- <script src="{% static 'js/order.js' %}"></script> -->
 <div class="row">
     <div class="col-12 card">
         {% if messages %}
@@ -56,7 +56,7 @@
     </div>
 </div>
 <script>
-    $(function () {
+    !(function () {
         $('#medicineSelect').on('change', function() {
         medicineValue = this.value;
 
@@ -75,5 +75,5 @@
 
     });
 </script>
-    <!-- <script src="{% static 'js/order.js' %}"></script> -->
+<!-- <script src="{% static 'js/order.js' %}"></script> -->
 {% endblock main %}
