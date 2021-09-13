@@ -40,6 +40,26 @@ def UniqueUsernameIgnoreCaseValidator(value):
         raise ValidationError('User with this Username already exists.')
 
 
+# class MinimumLengthValidator:
+#     def __init__(self, min_length=8):
+#         self.min_length = min_length
+
+#     def validate(self, password, user=None):
+#         if len(password) < self.min_length:
+#             raise ValidationError(
+#                 ("This password must contain at least %(min_length)d characters."),
+#                 code='password_too_short',
+#                 params={'min_length': self.min_length},
+#             )
+
+#     def get_help_text(self):
+#         return (
+#             "Your password must contain at least %(min_length)d characters."
+#             % {'min_length': self.min_length}
+#         )
+
+
+
 class SignUpForm(forms.ModelForm):
     username = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
@@ -47,7 +67,9 @@ class SignUpForm(forms.ModelForm):
         required=True,
         help_text='Usernames may contain <strong>alphanumeric</strong>, <strong>_</strong> and <strong>.</strong> characters')  # noqa: E261
     password = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
+        help_text='Passwords may contain <strong>at least 8 Characters + </strong> <br><strong>Special characters @,#,!,?,_ etc.</strong> <br> Have both <strong> "UPPERCASE" and "lowercase"</strong> characters')  # noqa: E261
+        
     confirm_password = forms.CharField(
         widget=forms.PasswordInput(attrs={'class': 'form-control'}),
         label="Confirm your password",

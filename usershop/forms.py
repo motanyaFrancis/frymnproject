@@ -15,6 +15,14 @@ class StockForm(forms.ModelForm):
         model = ShopStock
         fields = ['medicine','exp_date','price','quantity']
 
+class CheckOutForm(forms.ModelForm):
+    
+    class Meta:
+        fields = ['medicine', 'price', 'quantity']
+
+
+
+
 
 # from django import forms
 # from django_countries.fields import CountryField

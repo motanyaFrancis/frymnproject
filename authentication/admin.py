@@ -15,7 +15,7 @@ class AdressAdmin(admin.ModelAdmin):
 
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Address, AdressAdmin)
-admin.site.site_header = 'Frymn Pharmacy '
+admin.site.site_header = 'Frymn Pharmacy Inventory System'
 admin.site.site_title = 'Dashboard'
 admin.site.index_title = 'Frymn Pharmacy'
 admin.site.unregister(Group)

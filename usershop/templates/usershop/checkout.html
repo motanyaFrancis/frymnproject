@@ -2,12 +2,12 @@
 {% load static %}
 
 
-{% block title %} Shop Panel {% endblock %}
+{% block title %} Billing {% endblock %}
 {% block side %}
     {% include 'usershop/partial_shop_menu.html' with active='checkout' %}
 {% endblock %}
 {% block head %}
-<link href="{% static 'css/usershop.css' %}" rel="stylesheet">
+<!-- <link href="{% static 'css/usershop.css' %}" rel="stylesheet"> -->
 {% endblock head %}
 
 {% block main %}
@@ -40,17 +40,15 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for stock in stocks %}
 
                         <tr>
-                            <th scope="row">{{stock.pk}}</th>
-                            <td>{{stock.medicine.name}}</td>
-                            <td>{{stock.price}}</td>
+                            <th scope="row"></th>
+                            <td></td>
+                            <td></td>
                             <td></td>
                             <td></td>
                         </tr>
 
-                        {% endfor %}
                         </tbody>
                     </table>
                     </table>
@@ -63,21 +61,21 @@
                         <thead>
                         <tr>
                             <th>Subtotal</th>
-                            <td>KES-</td>
+                            <td>KSh-</td>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
                             <th>Discount</th>
-                            <td>KES-</td>
+                            <td>KSh-</td>
                         </tr>
                         <tr>
                             <th>Tax(16%)</th>
-                            <td>KES-</td>
+                            <td>KSh-</td>
                         </tr>
                         <tr>
                             <th>Totals</th>
-                            <td>KES-</td>
+                            <td>KSh-</td>
                         </tr>
 
                         </tbody>

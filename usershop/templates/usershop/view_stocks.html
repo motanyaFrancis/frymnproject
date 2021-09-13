@@ -49,7 +49,7 @@
                     <th scope="row">{{stock.pk}}</th>
                     <td>{{stock.medicine.name}}</td>
                     <td>{{stock.exp_date}}</td>
-                    <td>{{stock.price}}</td>
+                    <td>KSh {{stock.price}}</td>
                     <td>{{stock.get_available}}</td>
                     <td class="table-action">
                         <a href="{% url 'edit_stock_shop' pk=stock.pk %}" title="Edit Stock">

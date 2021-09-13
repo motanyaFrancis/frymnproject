@@ -9,15 +9,16 @@
 <!-- <script src="{% static 'js/order.js' %}"></script> -->
 <div class="row">
     <div class="col-12 card">
+        <div class="card-header">
         {% if messages %}
             {% for message in messages %}
             <div class="alert alert-success alert-dismissable">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                {{ message }}
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">&times;</button>
+                <div class="alert-message">{{ message }}</div>
             </div>
             {% endfor %}
         {% endif %}
-        <div class="card-header">
+      
             <h3 >Place Order</h3>
         </div>
         <div class="card-body">
@@ -56,10 +57,10 @@
     </div>
 </div>
 <script>
-    !(function () {
-        $('#medicineSelect').on('change', function() {
+    
+    document.getElementById('medicineSelect').addEventListener('change', function() {
         medicineValue = this.value;
-
+        console.log(medicineValue)
         $.ajax({
                 url: '/activities/orders/get_company_list',
                 data: {
@@ -67,13 +68,13 @@
                 },
                 dataType: 'html',
                 success: function (data) {
+                    console.log(data)
                     $('#collegeSelect').html(data);
                 }
             });
 
         });
 
-    });
 </script>
 <!-- <script src="{% static 'js/order.js' %}"></script> -->
 {% endblock main %}

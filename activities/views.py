@@ -29,12 +29,14 @@ def create_order(request):
 @login_required
 @ajax_required
 def get_company_list(request):
-    medicinevalue = request.GET.get('medicinevalue', None)
-    company_list = CompanyStock.objects.filter(medicine__pk=medicinevalue).filter(exp_date_gt=date.today())
-    html = ''
-    html = '{0}{1}'.format(
-        html, render_to_string('activities/company_list.html',
-                               {
-                                   'company_list': company_list,
-                               }))
-    return HttpResponse(html)
+    if request.is_ajax():
+        medicinevalue = request.GET.get('medicinevalue')
+        company_list = CompanyStock.objects.filter(medicine__pk=medicinevalue)
+        print([company for company in company_list])
+        html = ''
+        html = '{0}{1}'.format(
+            html, render_to_string('activities/company_list.html',
+                                {
+                                    'company_list': company_list,
+                                }))
+        return HttpResponse(html)
